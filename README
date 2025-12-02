@@ -1,0 +1,177 @@
+## Open WebUI Tools
+
+This repo documents how I configure [Open WebUI](https://github.com/open-webui/open-webui) using tools and how I create my own custom tools.  
+It is meant as a reference for myself and for anyone who wants to reuse or learn from my setup.
+
+---
+
+### Goals of this project
+
+- **Centralize configuration**: Keep all my Open WebUI tool definitions and configuration in one place.
+- **Share custom tools**: Show how I build and organize my own tools (Python/Node/script-based, etc).
+- **Document my workflow**: Explain how I use these tools day‑to‑day in Open WebUI.
+
+---
+
+### Project structure
+
+_Currently:_
+
+- **`README`**: This file. High-level documentation of the project and tools.
+
+_Current/typical layout:_
+
+- **`tools/`**: Source code for my custom tools.
+  - **`youtube_transcript.py`**: Tool to fetch YouTube transcripts.
+- **`config/`**: Open WebUI tool configuration files (YAML/JSON/etc).
+- **`examples/`**: Example calls, prompts, and usage notes.
+
+I will update this section as the repo grows.
+
+---
+
+### My Open WebUI setup
+
+> This section explains in general how I run Open WebUI and where these tools fit.
+
+- **Open WebUI version**: `TODO: fill in (e.g. v0.3.x)`
+- **How I run it**:
+  - **Option A**: Docker
+  - **Option B**: Local install (Python / Node)
+- **Where tools are registered**:
+  - `TODO: describe where you point Open WebUI to your tools (e.g. config file, environment variables, or UI settings).`
+
+Example (if using Docker + config file):
+
+docker run -d \
+  -p 3000:3000 \
+  -v $PWD/config:/app/config \
+  -v $PWD/tools:/app/tools \
+  --name open-webui \
+  ghcr.io/open-webui/open-webui:latest---
+
+### Tool configuration overview
+
+I use Open WebUI tools to:
+
+- **Integrate external APIs** (e.g. GitHub, Notion, etc).
+- **Automate local tasks** (file operations, project scaffolding, scripts).
+- **Access personal data** (within safe boundaries and with configuration in this repo).
+
+Typical components of a tool:
+
+- **Definition/config file** (YAML/JSON) that Open WebUI reads.
+- **Implementation file** (Python/JS/etc) that does the actual work.
+- **Environment variables/secrets** (API keys, tokens) that are **not** stored in this repo.
+
+---
+
+### Python tool: YouTube transcript (`youtube_transcript.py`)
+
+- **Mục đích**: Lấy transcript từ video YouTube (ưu tiên tiếng Việt, fallback sang tiếng Anh nếu cần).
+- **File**: `tools/python/youtube_transcript.py`
+- **Thư viện cần cài**:
+
+```bash
+pip install youtube-transcript-api
+```
+
+- **Hàm chính**:
+  - **`get_youtube_transcript(url_or_id: str, language: str = "vi")`**
+  - Nhận vào: URL YouTube hoặc video ID.
+  - Trả về: dict chứa `video_id`, `language`, `segments` (danh sách đoạn transcript) và `full_text` (text đầy đủ).
+
+- **Chạy nhanh để test qua CLI**:
+
+```bash
+python tools/python/youtube_transcript.py "https://www.youtube.com/watch?v=VIDEO_ID" --language vi
+```
+
+- **Ý tưởng tích hợp vào Open WebUI** (ví dụ khái niệm):
+  - Tạo một tool config trỏ tới module/hàm `get_youtube_transcript`.
+  - Trong chat, bạn có thể hỏi:  
+    “Lấy transcript video YouTube này và tóm tắt nội dung: https://www.youtube.com/watch?v=...”
+  - Open WebUI gọi tool, lấy `full_text`, rồi model sẽ tóm tắt.
+
+---
+
+### How I organize and add new tools
+
+- **Naming**:
+  - **Descriptive and short** (e.g. `github_issues_fetcher`, `project_scaffold`, `notion_notes_search`).
+- **Location**:
+  - Put implementations under `tools/...` by language.
+  - Put configuration under `config/...`.
+- **Version control**:
+  - Keep **code and configuration** in git.
+  - Keep **secrets and API keys** only in local `.env` files, environment variables, or secret managers (never committed).
+
+Typical steps to add a new tool:
+
+1. **Create the implementation file** in `tools/...`.
+2. **Create/update the tool config** in `config/...`.
+3. **Restart/reload Open WebUI** so it picks up the new tool.
+4. **Test from the UI** and document usage in this README or an `examples/` file.
+
+---
+
+### Environment variables and secrets
+
+I do **not** commit any secrets to this repo.
+
+- **.env files**: Stored locally only (ignored by git).
+- **Examples**:
+  - `TODO: list example variable names, like GITHUB_TOKEN, NOTION_TOKEN, etc.`
+
+If you want to replicate my setup:
+
+1. Copy my sample env file (once I add it): `cp .env.example .env`.
+2. Fill in your own API keys and secrets.
+3. Restart Open WebUI.
+
+---
+
+### Usage examples
+
+I will collect example conversations and prompt + tool sequences here over time.
+
+Planned examples:
+
+- **`github_issues_fetcher`**:
+  - Ask: “List open issues assigned to me in repo X.”
+- **`project_scaffold`**:
+  - Ask: “Create a basic structure for a new Python CLI project.”
+
+Each example will show:
+
+- The **prompt** I type.
+- The **tool** that gets called.
+- The **response** and how I use it.
+
+---
+
+### Roadmap
+
+What I plan to add to this repo:
+
+- **More concrete tool examples** with real code.
+- **Configs for multiple environments** (local/dev/prod).
+- **Best practices** for:
+  - Tool naming and organization.
+  - Error handling and logging inside tools.
+  - Security (limiting what tools can access).
+
+---
+
+### Contributing / Reuse
+
+This repo primarily documents **my personal Open WebUI setup**, but you are welcome to:
+
+- **Copy/adapt** tools for your own environment.
+- **Open issues/PRs** if you see improvements.
+- **Share feedback** on how you use similar tools.
+
+---
+
+### License
+MIT
