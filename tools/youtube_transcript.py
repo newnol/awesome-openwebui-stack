@@ -74,7 +74,7 @@ def extract_video_id(url_or_id: str) -> str:
 
     match = YOUTUBE_ID_REGEX.search(candidate)
     if not match:
-        raise ValueError("Không thể lấy video ID từ URL/ID đã cung cấp.")
+        raise ValueError("Could not extract video ID from the provided URL/ID.")
     return match.group(1)
 
 
@@ -118,12 +118,12 @@ def _fetch_youtube_transcript_structured(
             continue
 
     if transcript_data is None:
-        msg = "Không tìm thấy transcript cho video này."
+        msg = "Transcript not found for this video."
         if last_error is not None:
-            msg += f" Lý do: {last_error}"
+            msg += f" Reason: {last_error}"
         raise RuntimeError(msg)
 
-    # Chuẩn hóa về list[dict] để dễ dùng trong Open WebUI / JSON.
+    # Normalize to list[dict] for easier use in Open WebUI / JSON.
     segments = []
     for snippet in transcript_data:
         # FetchedTranscriptSnippet has attributes: text, start, duration

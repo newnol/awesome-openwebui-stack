@@ -1,0 +1,1 @@
+python tools/youtube_transcript.py "https://www.youtube.com/watch?v=6oiIMUrbilw" --language en

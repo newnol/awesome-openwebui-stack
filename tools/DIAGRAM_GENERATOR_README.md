@@ -1,16 +1,16 @@
 # Diagram Generator Tool
 
-Tool này cho phép AI tạo ra các cloud system architecture diagrams sử dụng thư viện [diagrams](https://github.com/mingrammer/diagrams).
+This tool allows AI to create cloud system architecture diagrams using the [diagrams](https://github.com/mingrammer/diagrams) library.
 
-## Cài đặt
+## Installation
 
-### 1. Cài đặt Python package
+### 1. Install Python package
 
 ```bash
 pip install diagrams
 ```
 
-### 2. Cài đặt Graphviz (system dependency)
+### 2. Install Graphviz (system dependency)
 
 **macOS:**
 ```bash
@@ -23,26 +23,26 @@ sudo apt-get install graphviz
 ```
 
 **Windows:**
-Download và cài đặt từ: https://graphviz.org/download/
+Download and install from: https://graphviz.org/download/
 
-### 3. Thêm tool vào Open WebUI
+### 3. Add tool to Open WebUI
 
-Copy file `diagram_generator.py` vào thư mục tools của Open WebUI hoặc cấu hình đường dẫn đến file này.
+Copy the `diagram_generator.py` file to the Open WebUI tools directory or configure the path to this file.
 
-## Cách sử dụng
+## Usage
 
-### Trong Open WebUI Chat
+### In Open WebUI Chat
 
-Bạn có thể yêu cầu AI tạo diagram bằng cách cung cấp mô tả hoặc code Python:
+You can ask AI to create diagrams by providing a description or Python code:
 
-**Ví dụ 1: Yêu cầu AI tạo diagram**
+**Example 1: Ask AI to create a diagram**
 ```
-Tạo một diagram kiến trúc AWS đơn giản với Load Balancer, Web Server và Database
+Create a simple AWS architecture diagram with Load Balancer, Web Server and Database
 ```
 
-**Ví dụ 2: Cung cấp code trực tiếp**
+**Example 2: Provide code directly**
 ```
-Tạo diagram với code này:
+Create a diagram with this code:
 ```python
 from diagrams import Diagram
 from diagrams.aws.compute import EC2
@@ -54,19 +54,19 @@ with Diagram("Simple Architecture"):
 ```
 ```
 
-### Cấu hình User Settings
+### User Settings Configuration
 
-Tool hỗ trợ các UserValves sau (có thể cấu hình trong Open WebUI):
+The tool supports the following UserValves (configurable in Open WebUI):
 
-- **OUTPUT_DIR**: Thư mục lưu file diagram (mặc định: thư mục tạm)
-- **OUTPUT_FORMAT**: Định dạng file (png, jpg, pdf, svg) - mặc định: png
-- **FILENAME_PREFIX**: Tiền tố tên file - mặc định: "diagram"
+- **OUTPUT_DIR**: Directory to save diagram files (default: temporary directory)
+- **OUTPUT_FORMAT**: File format (png, jpg, pdf, svg) - default: png
+- **FILENAME_PREFIX**: Filename prefix - default: "diagram"
 
-## Ví dụ Code
+## Code Examples
 
-Xem file `tools/examples/diagram_example.py` để có các ví dụ đầy đủ.
+See `tools/examples/diagram_example.py` for complete examples.
 
-### Ví dụ đơn giản
+### Simple Example
 
 ```python
 from diagrams import Diagram
@@ -78,7 +78,7 @@ with Diagram("Simple Architecture"):
     ELB("Load Balancer") >> EC2("Web Server") >> RDS("Database")
 ```
 
-### Ví dụ với Clusters
+### Example with Clusters
 
 ```python
 from diagrams import Diagram, Cluster
@@ -96,7 +96,7 @@ with Diagram("Serverless Architecture"):
     api >> storage
 ```
 
-## Các Provider được hỗ trợ
+## Supported Providers
 
 - **AWS**: `diagrams.aws.*`
 - **GCP**: `diagrams.gcp.*`
@@ -105,23 +105,23 @@ with Diagram("Serverless Architecture"):
 - **On-Premises**: `diagrams.onprem.*`
 - **Alibaba Cloud**: `diagrams.alibabacloud.*`
 - **OCI**: `diagrams.oci.*`
-- Và nhiều provider khác (xem [diagrams documentation](https://diagrams.mingrammer.com/))
+- And many other providers (see [diagrams documentation](https://diagrams.mingrammer.com/))
 
-## Lưu ý bảo mật
+## Security Notes
 
-Tool này có validation để ngăn chặn:
-- Các import nguy hiểm (os, sys, subprocess, etc.)
-- Các function calls nguy hiểm (eval, exec, open, etc.)
+This tool has validation to prevent:
+- Dangerous imports (os, sys, subprocess, etc.)
+- Dangerous function calls (eval, exec, open, etc.)
 - Code injection attacks
 
-Chỉ code sử dụng thư viện `diagrams` và các module an toàn mới được phép thực thi.
+Only code using the `diagrams` library and safe modules is allowed to execute.
 
-## Testing từ CLI
+## CLI Testing
 
-Bạn có thể test tool từ command line:
+You can test the tool from the command line:
 
 ```bash
-# Tạo file test_diagram.py với code diagram
+# Create test_diagram.py file with diagram code
 cat > test_diagram.py << 'EOF'
 from diagrams import Diagram
 from diagrams.aws.compute import EC2
@@ -131,26 +131,25 @@ with Diagram("Test"):
     EC2("Server") >> RDS("DB")
 EOF
 
-# Chạy tool
+# Run the tool
 python tools/diagram_generator.py test_diagram.py --output-dir ./output --format png
 ```
 
 ## Troubleshooting
 
-### Lỗi: "Failed to import diagrams library"
-- Đảm bảo đã cài đặt: `pip install diagrams`
+### Error: "Failed to import diagrams library"
+- Make sure you have installed: `pip install diagrams`
 
-### Lỗi: "Graphviz not found"
-- Cài đặt Graphviz system package (xem phần Cài đặt ở trên)
+### Error: "Graphviz not found"
+- Install Graphviz system package (see Installation section above)
 
-### Diagram không được tạo
-- Kiểm tra code có sử dụng `with Diagram(...)` context manager
-- Đảm bảo code không có syntax errors
-- Kiểm tra quyền ghi vào thư mục output
+### Diagram not created
+- Check that code uses `with Diagram(...)` context manager
+- Ensure code has no syntax errors
+- Check write permissions for output directory
 
-## Tài liệu tham khảo
+## References
 
 - [diagrams GitHub](https://github.com/mingrammer/diagrams)
 - [diagrams Documentation](https://diagrams.mingrammer.com/)
 - [diagrams Examples](https://diagrams.mingrammer.com/docs/getting-started/examples)
-
