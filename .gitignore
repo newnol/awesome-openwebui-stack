@@ -106,3 +106,6 @@ typings/
 cython_debug/
 
 output
+test
+
+*.sh
