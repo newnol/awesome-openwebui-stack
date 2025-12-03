@@ -29,6 +29,13 @@ If a tool doesn't match the query, return an empty list []. Otherwise, return a 
         status: bool = Field(default=False)
         pass
 
+    class UserValves(BaseModel):
+        """User-configurable settings"""
+        model: str = Field(
+            default="",
+            description="Model to use for tool filtering. Leave empty to use the current chat model. Enter a specific model ID to use that model instead."
+        )
+
     def __init__(self):
         self.valves = self.Valves()
         pass
@@ -41,6 +48,16 @@ If a tool doesn't match the query, return an empty list []. Otherwise, return a 
         __user__: Optional[dict] = None,
         __model__: Optional[dict] = None,
     ) -> dict:
+        # Initialize user valves if not present
+        if __user__ is None:
+            __user__ = {}
+        if "valves" not in __user__:
+            __user__["valves"] = self.UserValves()
+        else:
+            # Ensure UserValves structure is correct
+            if not isinstance(__user__["valves"], self.UserValves):
+                __user__["valves"] = self.UserValves(**__user__["valves"])
+        
         messages = body["messages"]
         user_message = get_last_user_message(messages)
 
@@ -80,8 +97,16 @@ If a tool doesn't match the query, return an empty list []. Otherwise, return a 
             )
             + f"\nQuery: {user_message}"
         )
+        # Determine which model to use
+        # If user has specified a model in UserValves, use it; otherwise use the current chat model
+        user_model = __user__["valves"].model
+        selected_model = (
+            user_model.strip() if user_model and user_model.strip() 
+            else body["model"]
+        )
+        
         payload = {
-            "model": body["model"],
+            "model": selected_model,
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt},
