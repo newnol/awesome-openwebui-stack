@@ -157,6 +157,79 @@ with Diagram("Microservices Architecture", show=False):
     payment_lambda >> s3
 """
 
+# Example 7: Using Multiple Providers (Demonstrates Full Provider Support)
+example_7_all_providers = """
+from diagrams import Diagram, Cluster
+# AWS
+from diagrams.aws.compute import EC2, Lambda
+from diagrams.aws.database import RDS, Dynamodb
+from diagrams.aws.storage import S3
+# GCP
+from diagrams.gcp.compute import ComputeEngine
+from diagrams.gcp.database import Spanner
+# Azure
+from diagrams.azure.compute import VM
+from diagrams.azure.database import CosmosDb
+# Kubernetes
+from diagrams.k8s.compute import Pod
+from diagrams.k8s.network import Service
+# On-Premises
+from diagrams.onprem.database import PostgreSQL
+from diagrams.onprem.inmemory import Redis
+from diagrams.onprem.monitoring import Prometheus
+# Alibaba Cloud
+from diagrams.alibabacloud.compute import ECS
+# SaaS - Using verified icons
+from diagrams.saas.chat import Slack
+from diagrams.saas.communication import Twilio
+
+with Diagram("Multi-Provider Architecture", show=False):
+    # AWS Components
+    with Cluster("AWS"):
+        aws_lambda = Lambda("Function")
+        aws_db = Dynamodb("NoSQL DB")
+        aws_storage = S3("Storage")
+    
+    # GCP Components
+    with Cluster("GCP"):
+        gcp_vm = ComputeEngine("VM")
+        gcp_db = Spanner("Database")
+    
+    # Azure Components
+    with Cluster("Azure"):
+        azure_vm = VM("Virtual Machine")
+        azure_db = CosmosDb("Cosmos DB")
+    
+    # Kubernetes
+    with Cluster("K8s"):
+        k8s_pod = Pod("Application Pod")
+        k8s_svc = Service("Service")
+    
+    # On-Premises
+    with Cluster("On-Prem"):
+        postgres = PostgreSQL("PostgreSQL")
+        redis = Redis("Cache")
+        prom = Prometheus("Monitoring")
+    
+    # Alibaba Cloud
+    alibaba_ecs = ECS("Alibaba ECS")
+    
+    # SaaS Services
+    slack = Slack("Team Chat")
+    twilio = Twilio("SMS Service")
+    
+    # Connections
+    aws_lambda >> aws_db >> aws_storage
+    gcp_vm >> gcp_db
+    azure_vm >> azure_db
+    k8s_pod >> k8s_svc >> postgres
+    postgres >> redis
+    prom >> redis
+    alibaba_ecs >> postgres
+    aws_lambda >> slack
+    slack >> twilio
+"""
+
 if __name__ == "__main__":
     print("Diagram Examples for diagram_generator tool")
     print("=" * 50)
@@ -172,4 +245,6 @@ if __name__ == "__main__":
     print(example_5_onprem)
     print("\nExample 6: Complex Microservices Architecture")
     print(example_6_microservices)
+    print("\nExample 7: Using Multiple Providers (Full Provider Support)")
+    print(example_7_all_providers)
 

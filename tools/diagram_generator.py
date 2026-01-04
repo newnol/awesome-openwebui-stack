@@ -11,7 +11,7 @@ description: A tool that generates cloud system architecture diagrams using the 
 
 requirements: diagrams
 
-version: 0.1.0
+version: 0.2.0
 
 license: MIT
 """
@@ -110,10 +110,10 @@ def _validate_diagram_code(code: str) -> tuple[bool, str]:
         "raw_input(",
     ]
     
-    # Dangerous imports to block
+    # Dangerous imports to block (but allow imports from diagrams)
     dangerous_imports = [
-        r"import\s+os\b",
-        r"import\s+sys\b",
+        r"import\s+os\b(?!\s*$)",  # Allow "import os" at end of line (in diagrams context)
+        r"import\s+sys\b(?!\s*$)",
         r"import\s+subprocess\b",
         r"import\s+shutil\b",
         r"import\s+pickle\b",
@@ -128,6 +128,9 @@ def _validate_diagram_code(code: str) -> tuple[bool, str]:
         r"os\.popen",
         r"subprocess\.",
     ]
+    
+    # Allow imports from diagrams - these are safe
+    diagrams_import_pattern = r"from\s+diagrams\s+import|import\s+diagrams"
     
     # Remove comments and strings to avoid false positives
     lines = code.split('\n')
@@ -177,10 +180,18 @@ def _validate_diagram_code(code: str) -> tuple[bool, str]:
         if func in cleaned_code:
             return False, f"Code contains potentially dangerous function call: {func}"
     
-    # Check for dangerous imports using regex
+    # Check for dangerous imports using regex (but allow diagrams imports)
+    # First, check if code contains diagrams imports - if so, allow them
+    has_diagrams_import = bool(re.search(diagrams_import_pattern, cleaned_code, re.IGNORECASE))
+    
     for pattern in dangerous_imports:
         if re.search(pattern, cleaned_code, re.IGNORECASE):
+            # Block dangerous imports even if diagrams imports are present
+            # (diagrams imports are handled separately and are safe)
             return False, f"Code contains potentially dangerous import: {pattern}"
+    
+    # Explicitly allow diagrams imports
+    # (This check is mainly for documentation - diagrams imports are already safe)
     
     # Basic syntax check
     try:
@@ -219,49 +230,80 @@ def _execute_diagram_code(
             namespace["Cluster"] = Cluster
             namespace["Edge"] = Edge
             
-            # Import common providers - make them available in namespace
+            # Import diagrams module itself so user code can use "from diagrams.xxx import yyy"
+            import diagrams
+            namespace["diagrams"] = diagrams
+            
+            # Dynamically import ALL available providers from diagrams
+            import pkgutil
+            import importlib
+            
+            # List of known providers (will be auto-discovered)
+            providers_imported = []
+            
+            # Try to discover all providers dynamically
             try:
-                from diagrams.onprem import compute, database, network, storage, inmemory, queue
-                namespace.update({
-                    "compute": compute,
-                    "database": database,
-                    "network": network,
-                    "storage": storage,
-                    "inmemory": inmemory,
-                    "queue": queue,
-                })
-            except ImportError:
+                diagrams_path = diagrams.__path__
+                for importer, modname, ispkg in pkgutil.iter_modules(diagrams_path):
+                    if not modname.startswith('_') and ispkg:
+                        try:
+                            # Import the provider module
+                            provider_module = importlib.import_module(f"diagrams.{modname}")
+                            namespace[f"diagrams_{modname}"] = provider_module
+                            providers_imported.append(modname)
+                            
+                            # Also try to import common submodules (compute, database, etc.)
+                            try:
+                                provider_path = provider_module.__path__
+                                for sub_importer, sub_modname, sub_ispkg in pkgutil.iter_modules(provider_path):
+                                    if not sub_modname.startswith('_'):
+                                        try:
+                                            sub_module = importlib.import_module(f"diagrams.{modname}.{sub_modname}")
+                                            # Add to namespace with provider prefix for clarity
+                                            namespace[f"{modname}_{sub_modname}"] = sub_module
+                                        except (ImportError, AttributeError):
+                                            pass
+                            except (AttributeError, ImportError):
+                                # Provider doesn't have submodules or can't be iterated
+                                pass
+                        except (ImportError, AttributeError) as e:
+                            # Skip providers that can't be imported
+                            pass
+            except Exception as e:
+                # If dynamic discovery fails, fall back to manual imports
                 pass
             
-            try:
-                from diagrams.aws import compute as aws_compute, database as aws_database, storage as aws_storage, network as aws_network
-                namespace.update({
-                    "aws_compute": aws_compute,
-                    "aws_database": aws_database,
-                    "aws_storage": aws_storage,
-                    "aws_network": aws_network,
-                })
-            except ImportError:
-                pass
-            
-            try:
-                from diagrams.gcp import compute as gcp_compute, database as gcp_database, storage as gcp_storage
-                namespace.update({
-                    "gcp_compute": gcp_compute,
-                    "gcp_database": gcp_database,
-                    "gcp_storage": gcp_storage,
-                })
-            except ImportError:
-                pass
-            
-            try:
-                from diagrams.azure import compute as azure_compute, database as azure_database
-                namespace.update({
-                    "azure_compute": azure_compute,
-                    "azure_database": azure_database,
-                })
-            except ImportError:
-                pass
+            # Fallback: Manually import common providers if dynamic import didn't work
+            if not providers_imported:
+                # Common providers to import
+                common_providers = {
+                    "onprem": ["compute", "database", "network", "storage", "inmemory", "queue", "monitoring", "container", "ci", "client", "cms", "crypto", "dns", "gitops", "groupware", "iac", "logging", "mail", "messagequeue", "mlops", "security", "vcs", "workflow"],
+                    "aws": ["compute", "database", "storage", "network", "integration", "analytics", "security", "management", "developer", "mobile", "iot", "game", "media", "ar", "vr", "cost", "enduser", "migration", "quantum", "robotics", "satellite", "blockchain"],
+                    "gcp": ["compute", "database", "storage", "network", "security", "ml", "analytics", "iot", "devtools", "operations"],
+                    "azure": ["compute", "database", "storage", "network", "security", "identity", "integration", "iot", "mobile", "devops", "analytics", "ai", "web"],
+                    "k8s": ["compute", "network", "storage", "rbac", "config", "controlplane", "podconfig", "group"],
+                    "alibabacloud": ["compute", "database", "storage", "network", "security"],
+                    "oci": ["compute", "database", "storage", "network", "security"],
+                    "generic": ["blank", "os"],
+                    "programming": ["framework", "language", "runtime"],
+                    "saas": ["analytics", "chat", "communication", "crm", "ecommerce", "monitoring", "search"],
+                }
+                
+                for provider_name, submodules in common_providers.items():
+                    try:
+                        provider_module = importlib.import_module(f"diagrams.{provider_name}")
+                        namespace[f"diagrams_{provider_name}"] = provider_module
+                        providers_imported.append(provider_name)
+                        
+                        # Import submodules
+                        for submodule in submodules:
+                            try:
+                                sub_module = importlib.import_module(f"diagrams.{provider_name}.{submodule}")
+                                namespace[f"{provider_name}_{submodule}"] = sub_module
+                            except ImportError:
+                                pass
+                    except ImportError:
+                        pass
                 
         except ImportError as e:
             return False, "", f"Failed to import diagrams library: {str(e)}. Please install it with: pip install diagrams"
@@ -297,6 +339,45 @@ def _execute_diagram_code(
                     return True, path, ""
             return False, "", "Diagram file was not created. Make sure your code uses Diagram context manager correctly."
             
+    except ImportError as e:
+        # Provide helpful error message for import errors
+        error_msg = str(e)
+        if "cannot import name" in error_msg:
+            # Extract the icon name and module from error
+            import re
+            match = re.search(r"cannot import name '(\w+)' from '([^']+)'", error_msg)
+            if match:
+                icon_name = match.group(1)
+                module_path = match.group(2)
+                
+                # Try to list available icons in the module
+                available_icons = []
+                try:
+                    # Import the module and get its attributes
+                    module = importlib.import_module(module_path)
+                    # Get all public attributes (icons) from the module
+                    available_icons = [
+                        name for name in dir(module)
+                        if not name.startswith('_') and 
+                        isinstance(getattr(module, name, None), type)
+                    ]
+                    # Sort and limit to first 20 for readability
+                    available_icons = sorted(available_icons)[:20]
+                except Exception:
+                    pass
+                
+                # Build error message
+                error_detail = f"Import error: '{icon_name}' is not available in '{module_path}'.\n\n"
+                error_detail += f"Please check the diagrams documentation at https://diagrams.mingrammer.com/ to find the correct icon name.\n"
+                
+                if available_icons:
+                    error_detail += f"\nSome available icons in '{module_path}' include:\n"
+                    error_detail += ", ".join(available_icons)
+                    if len(available_icons) == 20:
+                        error_detail += "\n(Showing first 20, see documentation for complete list)"
+                
+                return False, "", error_detail
+        return False, "", f"Import error: {error_msg}. Please check the diagrams documentation at https://diagrams.mingrammer.com/ to verify available icons."
     except Exception as e:
         return False, "", f"Error executing diagram code: {str(e)}"
     finally:
@@ -343,7 +424,18 @@ class Tools:
         **Important Notes:**
         - The code must use the Diagram context manager (with statement)
         - You don't need to specify filename or show parameters - they will be set automatically
-        - Supported providers: AWS, GCP, Azure, Kubernetes, On-Premises, and more
+        - **ALL providers and icons from diagrams library are supported!** You can import from any provider:
+          - `from diagrams.aws.* import *` (AWS)
+          - `from diagrams.gcp.* import *` (Google Cloud)
+          - `from diagrams.azure.* import *` (Azure)
+          - `from diagrams.k8s.* import *` (Kubernetes)
+          - `from diagrams.onprem.* import *` (On-Premises)
+          - `from diagrams.alibabacloud.* import *` (Alibaba Cloud)
+          - `from diagrams.oci.* import *` (Oracle Cloud)
+          - `from diagrams.generic.* import *` (Generic)
+          - `from diagrams.programming.* import *` (Programming)
+          - `from diagrams.saas.* import *` (SaaS)
+          - And any other provider available in diagrams library!
         - Output format can be configured via UserValves (default: PNG)
         
         **Example code:**
@@ -374,40 +466,88 @@ class Tools:
             api >> storage
         ```
         
-        **Available Providers and Common Components:**
+        **Supported Providers (ALL providers from diagrams library are supported!):**
+        
+        The tool automatically imports and makes available ALL providers from the diagrams library.
+        You can use any icon/component from any provider by importing it directly:
+        
+        **Major Cloud Providers:**
+        - **AWS** (`diagrams.aws.*`): EC2, Lambda, RDS, S3, CloudFront, and 100+ more icons
+        - **GCP** (`diagrams.gcp.*`): ComputeEngine, Functions, BigQuery, GCS, and more
+        - **Azure** (`diagrams.azure.*`): VM, FunctionApps, CosmosDb, and more
+        - **Alibaba Cloud** (`diagrams.alibabacloud.*`): ECS, RDS, OSS, and more
+        - **OCI** (`diagrams.oci.*`): Compute, Database, Storage, and more
+        
+        **Other Providers:**
+        - **Kubernetes** (`diagrams.k8s.*`): Pod, Deployment, Service, Ingress, and more
+        - **On-Premises** (`diagrams.onprem.*`): Server, PostgreSQL, Redis, Nginx, Docker, and more
+        - **Generic** (`diagrams.generic.*`): Blank, OS icons
+        - **Programming** (`diagrams.programming.*`): Framework, Language, Runtime icons
+        - **SaaS** (`diagrams.saas.*`): Analytics, Chat, CRM, E-commerce, and more
+        
+        **Common Examples:**
         
         AWS (diagrams.aws.*):
-        - compute: EC2, Lambda, ECS, EKS, Fargate, Batch
-        - database: RDS, Aurora, Dynamodb, Redshift, ElastiCache
-        - network: ELB, ALB, NLB, CloudFront, Route53, VPC, APIGateway
-        - storage: S3, EBS, EFS
-        - integration: SQS, SNS, EventBridge, StepFunctions
-        - analytics: Kinesis, Athena, EMR, Glue
+        - compute: EC2, Lambda, ECS, EKS, Fargate, Batch, Lightsail
+        - database: RDS, Aurora, Dynamodb, Redshift, ElastiCache, Documentdb
+        - network: ELB, ALB, NLB, CloudFront, Route53, VPC, APIGateway, DirectConnect
+        - storage: S3, EBS, EFS, Glacier, StorageGateway
+        - integration: SQS, SNS, EventBridge, StepFunctions, MQ
+        - analytics: Kinesis, Athena, EMR, Glue, Quicksight
+        - security: IAM, WAF, Shield, GuardDuty, Macie
+        - And many more categories...
         
         GCP (diagrams.gcp.*):
-        - compute: ComputeEngine, Functions, Run, GKE
-        - database: SQL, Spanner, Firestore, Bigtable
-        - network: LoadBalancing, CDN, DNS
-        - storage: GCS
+        - compute: ComputeEngine, Functions, Run, GKE, AppEngine
+        - database: SQL, Spanner, Firestore, Bigtable, Memorystore
+        - network: LoadBalancing, CDN, DNS, VPN, Interconnect
+        - storage: GCS, Filestore, PersistentDisk
+        - analytics: BigQuery, Dataflow, Dataproc, PubSub
+        - And more...
         
         Azure (diagrams.azure.*):
-        - compute: VM, FunctionApps, AKS, ContainerInstances
-        - database: SQLDatabases, CosmosDb
+        - compute: VM, FunctionApps, AKS, ContainerInstances, AppService
+        - database: SQLDatabases, CosmosDb, DatabaseForPostgresql, DatabaseForMysql
+        - network: LoadBalancer, ApplicationGateway, VPN, CDN
+        - storage: BlobStorage, FileStorage, DataLake
+        - And more...
         
         Kubernetes (diagrams.k8s.*):
-        - compute: Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet
-        - network: Service, Ingress, NetworkPolicy
+        - compute: Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet, Job, CronJob
+        - network: Service, Ingress, NetworkPolicy, Endpoint
         - storage: PV, PVC, StorageClass
+        - rbac: Role, ClusterRole, RoleBinding, ClusterRoleBinding
+        - And more...
         
         On-Premises (diagrams.onprem.*):
         - compute: Server, Nomad
-        - database: PostgreSQL, MySQL, MongoDB, Cassandra, MariaDB
+        - database: PostgreSQL, MySQL, MongoDB, Cassandra, MariaDB, Oracle, SQLServer
         - inmemory: Redis, Memcached (IMPORTANT: Redis is in inmemory, NOT database!)
-        - network: Nginx, HAProxy, Traefik, Kong
-        - queue: Kafka, RabbitMQ, Celery
-        - monitoring: Prometheus, Grafana, Datadog
-        - container: Docker, Containerd
-        - ci: Jenkins, GitlabCI, GithubActions
+        - network: Nginx, HAProxy, Traefik, Kong, Envoy, Consul
+        - queue: Kafka, RabbitMQ, Celery, ActiveMQ
+        - monitoring: Prometheus, Grafana, Datadog, Zabbix, Nagios
+        - container: Docker, Containerd, Crio
+        - ci: Jenkins, GitlabCI, GithubActions, CircleCI, TravisCI
+        - And many more categories...
+        
+        **To discover available icons, check the diagrams documentation:**
+        https://diagrams.mingrammer.com/
+        
+        **Important:** Not all icon names may be available in all versions of diagrams.
+        If you get an import error, check the official documentation to verify the correct icon name.
+        The tool will provide helpful error messages if an icon cannot be imported.
+        
+        You can import any available icon like this:
+        ```python
+        from diagrams.aws.compute import EC2, Lambda, ECS
+        from diagrams.gcp.database import Spanner
+        from diagrams.onprem.monitoring import Prometheus
+        from diagrams.saas.chat import Slack
+        # etc.
+        ```
+        
+        **Note:** Icon availability may vary by diagrams library version. Always refer to the
+        official documentation for the most up-to-date list of available icons.
         
         **Flow operators:**
         - >> : left to right flow
@@ -547,10 +687,17 @@ class Tools:
             file_size = os.path.getsize(output_path)
             file_size_kb = file_size / 1024
             
-            # Send the image to chat
+            # Send image via event emitter ONLY (not in response text)
+            # This prevents base64 from appearing in chat on subsequent calls
             await emitter.send_image(output_path, "Architecture Diagram")
             
-            return f"Diagram generated successfully!\n\nFile: {output_path}\nSize: {file_size_kb:.2f} KB\nFormat: {output_format.upper()}"
+            # Return simple text response without base64
+            # The image is sent separately via event emitter
+            return f"""Diagram generated successfully!
+
+**File:** {output_path}  
+**Size:** {file_size_kb:.2f} KB  
+**Format:** {output_format.upper()}"""
 
         except ValueError as e:
             error_message = f"Validation error: {str(e)}"

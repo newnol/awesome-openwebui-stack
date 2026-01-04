@@ -109,3 +109,5 @@ output
 test
 
 *.sh
+
+scirpts/
