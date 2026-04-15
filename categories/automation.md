@@ -2,10 +2,12 @@
 
 Glue between **chat**, **APIs**, and **systems**: scheduled tasks, ticketing, CI notifications, and multi-step workflows.
 
-## Highlights from this repo
+## Maintainer picks
 
-- [Auto Tool Filter](../tools/auto_tool_filter/auto_tool_filter.py) — LLM-based tool selection when many tools are enabled ([catalog](../catalog/tools.md)).
-- [Auto Router Model pipe](../function/pipe/auto_router_model/README.md) — route to models by rules ([catalog](../catalog/pipes.md)).
+- **Auto Tool Filter** — LLM-based tool selection when many tools are enabled ([catalog](../catalog/tools.md)).
+- **Auto Router Model** pipe — route to models by rules ([catalog](../catalog/pipes.md)).
+
+Source for both: [openwebui-extension](https://github.com/newnol/openwebui-extension).
 
 ## Related stacks
 

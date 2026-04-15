@@ -15,7 +15,7 @@ Run a **useful** Open WebUI assistant on **modest hardware** (small GPU, CPU-onl
 | Layer | Options | Trade-offs |
 |-------|---------|------------|
 | Model | Small instruct models via Ollama or similar | Lower capability; faster iteration |
-| Routing | Keyword or rule-based pipe (e.g. [Auto Router Model](../function/pipe/auto_router_model/README.md)) | Simple; not semantic routing |
+| Routing | Keyword or rule-based pipe (e.g. [Auto Router Model](https://github.com/newnol/openwebui-extension)) | Simple; not semantic routing |
 | Tools | Few, high-signal tools only | Less confusion; less API spend |
 | RAG | Small corpora, local embeddings when possible | RAM/CPU bound; tune chunk size |
 
@@ -28,5 +28,5 @@ Run a **useful** Open WebUI assistant on **modest hardware** (small GPU, CPU-onl
 ## Where to find code or deploy guidance
 
 - [Open WebUI docs](https://docs.openwebui.com/) — installation and configuration.
-- This repo: [catalog/pipes.md](../catalog/pipes.md) for the sample router pipe.
+- Example router pipe: [catalog/pipes.md](../catalog/pipes.md) → [openwebui-extension](https://github.com/newnol/openwebui-extension).
 - **Deploy artifacts** (compose, systemd, k8s): keep in a dedicated infra repository and link from issues or PRs here.

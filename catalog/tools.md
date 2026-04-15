@@ -2,38 +2,44 @@
 
 Python tools you can register in Open WebUI (see [official tools docs](https://docs.openwebui.com/features/plugin/tools/)).
 
-## In this repository (reference samples)
+## Maintainer: [openwebui-extension](https://github.com/newnol/openwebui-extension)
 
-### [YouTube Transcript](../tools/youtube_transcript/youtube_transcript.py)
+Source code for the following lives in **[newnol/openwebui-extension](https://github.com/newnol/openwebui-extension)** (not in this catalog repository).
+
+### YouTube Transcript
 - **Purpose:** Fetch transcripts from YouTube by URL or video ID.
 - **Best for:** Research, note-taking, quoted evidence from video content.
 - **Category:** Research, Productivity
 - **Stack fit:** [Research agent](../stacks/research-agent.md)
-- **Status:** Sample — verify before production use
-- **Notes:** Requires `youtube-transcript-api`. See [tools/README.md](../tools/README.md).
+- **Status:** See upstream repository
+- **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
+- **Notes:** Typically requires `youtube-transcript-api`.
 
-### [YouTube Info](../tools/youtube_info/youtube_info.py)
-- **Purpose:** Extract title and description from YouTube pages (Selenium-based).
+### YouTube Info
+- **Purpose:** Extract title and description from YouTube pages (often Selenium-based).
 - **Best for:** Metadata for research workflows.
 - **Category:** Research
 - **Stack fit:** [Research agent](../stacks/research-agent.md)
-- **Status:** Sample — headless browser dependency
-- **Notes:** Requires `selenium` and a suitable browser/driver setup.
+- **Status:** See upstream repository
+- **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
+- **Notes:** May require `selenium` and a suitable browser/driver setup.
 
-### [Diagram Generator](../tools/diagram_generator/diagram_generator.py)
-- **Purpose:** Generate architecture diagrams from Python using the `diagrams` library.
+### Diagram Generator
+- **Purpose:** Generate architecture diagrams from Python (e.g. `diagrams` library).
 - **Best for:** Visualizing systems, cloud diagrams from code.
 - **Category:** Coding, Productivity
 - **Stack fit:** [Coding assistant](../stacks/coding-assistant.md)
-- **Status:** Sample
-- **Notes:** Requires Graphviz system packages. See [DIAGRAM_GENERATOR_README.md](../tools/diagram_generator/DIAGRAM_GENERATOR_README.md).
+- **Status:** See upstream repository
+- **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
+- **Notes:** Often requires Graphviz system packages.
 
-### [Auto Tool Filter](../tools/auto_tool_filter/auto_tool_filter.py)
+### Auto Tool Filter
 - **Purpose:** Use an LLM to pick relevant tools from a larger toolset for a query.
 - **Best for:** Reducing noise when many tools are enabled.
 - **Category:** Multi-agent, Automation
 - **Stack fit:** [Coding assistant](../stacks/coding-assistant.md) when many tools are enabled
-- **Status:** Sample
+- **Status:** See upstream repository
+- **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
 
 ---
 

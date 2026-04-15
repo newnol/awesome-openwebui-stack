@@ -2,10 +2,12 @@
 
 Patterns with **multiple models**, **routers**, or **delegated roles**—including cost-aware routing.
 
-## Highlights from this repo
+## Maintainer picks
 
-- [Auto Router Model](../function/pipe/auto_router_model/README.md) — keyword-based model routing ([catalog](../catalog/pipes.md)).
-- [Auto Tool Filter](../tools/auto_tool_filter/auto_tool_filter.py) — pick tools with an LLM ([catalog](../catalog/tools.md)).
+- **Auto Router Model** — keyword-based model routing ([catalog](../catalog/pipes.md)).
+- **Auto Tool Filter** — pick tools with an LLM ([catalog](../catalog/tools.md)).
+
+Source: [openwebui-extension](https://github.com/newnol/openwebui-extension).
 
 ## Related stacks
 

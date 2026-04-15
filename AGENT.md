@@ -444,9 +444,9 @@ Khi AI tạo một tool mới, cần đảm bảo:
 
 ---
 
-## Ví dụ Reference: youtube_transcript.py
+## Ví dụ Reference: youtube_transcript (openwebui-extension)
 
-File `tools/youtube_transcript.py` là một ví dụ hoàn chỉnh về cách implement một tool:
+Một ví dụ hoàn chỉnh về cách implement một tool nằm trong repo **[openwebui-extension](https://github.com/newnol/openwebui-extension)** (ví dụ `youtube_transcript`):
 
 ### Điểm nổi bật:
 1. ✅ Metadata header đầy đủ
@@ -493,7 +493,7 @@ File `tools/youtube_transcript.py` là một ví dụ hoàn chỉnh về cách i
 ## Tips cho AI khi tạo Tools
 
 1. **Đọc kỹ yêu cầu**: Hiểu rõ user muốn tool làm gì
-2. **Tham khảo youtube_transcript.py**: Đây là template tốt để follow
+2. **Tham khảo repo [openwebui-extension](https://github.com/newnol/openwebui-extension)** (ví dụ `youtube_transcript`): template tốt để follow
 3. **Tách logic**: Helper functions cho sync operations, async wrapper cho entrypoint
 4. **Think about UX**: Status updates giúp user biết tool đang làm gì
 5. **Error messages**: Viết error messages rõ ràng, hữu ích
@@ -507,8 +507,8 @@ File `tools/youtube_transcript.py` là một ví dụ hoàn chỉnh về cách i
 ## Resources
 
 - Open WebUI Tools Documentation: https://docs.openwebui.com/tools
-- Example tool: `tools/youtube_transcript.py`
-- Project structure: Xem `README` và `tools/README.md`
+- Example tools / source: https://github.com/newnol/openwebui-extension
+- Catalog (discovery only): repo **awesome-openwebui-tools** / `open-webui-tools` — README và `catalog/`
 
 ---
 
@@ -516,7 +516,7 @@ File `tools/youtube_transcript.py` là một ví dụ hoàn chỉnh về cách i
 
 ### Python Virtual Environment
 
-Project này sử dụng Python virtual environment tại `.env/`. **Luôn kích hoạt môi trường này trước khi chạy code hoặc cài đặt packages:**
+**Source code cho tool nằm ở [openwebui-extension](https://github.com/newnol/openwebui-extension).** Repo catalog (awesome list) này không chứa file tool. Khi dev tool, clone `openwebui-extension` và dùng virtual environment tại `.env/` trong repo đó. **Luôn kích hoạt môi trường trước khi chạy code hoặc cài packages:**
 
 ```bash
 # Kích hoạt môi trường

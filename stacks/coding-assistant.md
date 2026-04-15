@@ -19,10 +19,9 @@ Support **read, write, review, and explain code** from chat, with optional **dia
 | Functions | Filters for style or policy if you enforce org rules |
 | Knowledge | Optional RAG over internal docs ([RAG workbench](rag-workbench.md)) |
 
-## In-repo examples
+## Maintainer examples
 
-- [Diagram Generator](../tools/diagram_generator/diagram_generator.py) — see [catalog/tools.md](../catalog/tools.md).
-- [Auto Tool Filter](../tools/auto_tool_filter/auto_tool_filter.py) — when many tools are enabled.
+- **Diagram Generator** and **Auto Tool Filter** — see [catalog/tools.md](../catalog/tools.md); source in [openwebui-extension](https://github.com/newnol/openwebui-extension).
 
 ## Trade-offs
 

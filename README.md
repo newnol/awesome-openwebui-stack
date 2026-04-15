@@ -4,7 +4,7 @@ A curated, English-language index for discovering **tools**, **functions**, **pi
 
 1. **What is worth knowing about?** Notable tools, functions, pipes, integrations, and learning material.
 2. **What is it for?** Use-case-oriented browsing via **categories** and **stacks** (composed setups for a goal).
-3. **Where is the code or deployment story?** Each entry links to a repository, docs, or—when hosted in this repo—a path to real code.
+3. **Where is the code or deployment story?** Each entry links to a repository, docs, or an upstream project (this repo does not ship tool or pipe source code).
 
 This repository is intentionally **catalog-first**: it is not a lab image, not a production deploy repo, and not a place for large application codebases. See [Scope and boundaries](#scope-and-boundaries).
 
@@ -70,9 +70,9 @@ Entries should be **useful**, **maintained or clearly labeled**, and **properly 
 
 ---
 
-## In-repo reference implementations
+## Author implementations (separate repo)
 
-This repository also holds **small sample tools and pipes** used as examples when learning or testing Open WebUI. They are listed in [catalog/tools.md](catalog/tools.md) and [catalog/pipes.md](catalog/pipes.md) with paths under `tools/` and `function/`. For deeper Open WebUI internals used when writing functions, see [docs/README.md](docs/README.md) (legacy internal API notes).
+Custom tools and pipes by the maintainer live in **[openwebui-extension](https://github.com/newnol/openwebui-extension)**. This catalog lists them with links there—see [catalog/tools.md](catalog/tools.md) and [catalog/pipes.md](catalog/pipes.md). For Open WebUI internals used when writing functions, see [docs/README.md](docs/README.md).
 
 ---
 

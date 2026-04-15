@@ -18,12 +18,9 @@ Combine **retrieval**, **summarization**, and **clear sourcing** so answers can 
 | Tools | Transcript/metadata tools when video is a source |
 | Policies | Org rules on allowed domains and PII |
 
-## In-repo examples
+## Maintainer examples
 
-- [YouTube Transcript](../tools/youtube_transcript/youtube_transcript.py)
-- [YouTube Info](../tools/youtube_info/youtube_info.py)
-
-See [catalog/tools.md](../catalog/tools.md).
+- **YouTube Transcript** and **YouTube Info** — listed in [catalog/tools.md](../catalog/tools.md); source in [openwebui-extension](https://github.com/newnol/openwebui-extension).
 
 ## Trade-offs
 

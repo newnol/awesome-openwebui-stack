@@ -2,10 +2,9 @@
 
 Use cases: **web grounding**, **summaries**, **quotes**, and **source comparison**. Prefer tools that make provenance explicit.
 
-## Highlights from this repo
+## Maintainer picks
 
-- [YouTube Transcript](../tools/youtube_transcript/youtube_transcript.py) — transcript extraction for video sources ([catalog](../catalog/tools.md)).
-- [YouTube Info](../tools/youtube_info/youtube_info.py) — metadata extraction ([catalog](../catalog/tools.md)).
+- **YouTube Transcript** / **YouTube Info** — video text and metadata; code in [openwebui-extension](https://github.com/newnol/openwebui-extension) ([catalog](../catalog/tools.md)).
 
 ## Related stacks
 

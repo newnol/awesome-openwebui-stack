@@ -2,9 +2,9 @@
 
 Browse items that help with **reading, writing, reviewing, or visualizing code** inside Open WebUI workflows.
 
-## Highlights from this repo
+## Maintainer picks
 
-- [Diagram Generator](../tools/diagram_generator/diagram_generator.py) — architecture diagrams from Python ([catalog](../catalog/tools.md)).
+- **Diagram Generator** — architecture diagrams from Python; code in [openwebui-extension](https://github.com/newnol/openwebui-extension) ([catalog](../catalog/tools.md)).
 
 ## Related stacks
 
