@@ -9,6 +9,7 @@ Official and community material for building on Open WebUI.
 
 ## In this repository
 
+- [docs/openwebui-import.md](../docs/openwebui-import.md) — pull tool/function listings from [openwebui.com](https://openwebui.com) search into local files for curation (not committed).
 - [docs/README.md](../docs/README.md) — internal API notes for functions (pipes, filters, chat helpers).
 - [docs/pipe-parameters.md](../docs/pipe-parameters.md), [chat-utilities.md](../docs/chat-utilities.md), [message-utilities.md](../docs/message-utilities.md), [embedding-utilities.md](../docs/embedding-utilities.md), [filter-functions.md](../docs/filter-functions.md), [event-emitter.md](../docs/event-emitter.md) — implementation-oriented references.
 

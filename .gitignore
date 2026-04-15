@@ -111,3 +111,10 @@ test
 *.sh
 
 scirpts/
+
+# Local scrapes from openwebui.com (see docs/openwebui-import.md)
+scratch/community-raw/*
+!scratch/community-raw/.gitkeep
+
+node_modules/
+package-lock.json
