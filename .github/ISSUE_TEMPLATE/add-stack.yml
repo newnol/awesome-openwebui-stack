@@ -1,0 +1,42 @@
+name: Add stack
+description: Propose a new stack write-up (goal-oriented recipe)
+title: "[Stack] "
+labels: ["catalog", "stack"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Stacks live under `stacks/`. See `docs/category-guide.md`.
+  - type: input
+    id: title
+    attributes:
+      label: Stack title
+      description: Short name (e.g. "Privacy-first lab").
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: Who is this for and what outcome?
+    validations:
+      required: true
+  - type: textarea
+    id: components
+    attributes:
+      label: Recommended components
+      description: Models, tools, pipes, integrations (bullet list).
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Trade-offs
+      description: Costs, complexity, limitations.
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Links to code or deploy guides
+      description: External repos encouraged. This catalog repo does not host production deploy files.

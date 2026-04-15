@@ -1,5 +1,9 @@
 # AGENT.md - Knowledge Base for AI Tool Creation
 
+> **Language note:** The curated catalog (`README.md`, `catalog/`, `categories/`, `stacks/`, contributor docs under `docs/`) is **English-first**. This file remains a detailed Vietnamese reference for tool authoring; for Open WebUI API surface area in English, see `docs/README.md` and related `docs/*.md` files.
+
+---
+
 Tài liệu này cung cấp kiến thức và guidelines để AI có thể tạo ra các công cụ (tools) hiệu quả cho Open WebUI.
 
 ---

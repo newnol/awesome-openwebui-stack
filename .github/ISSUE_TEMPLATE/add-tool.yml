@@ -1,0 +1,54 @@
+name: Add tool
+description: Suggest a tool for the catalog
+title: "[Tool] "
+labels: ["catalog", "tool"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read `docs/submission-guidelines.md` before submitting.
+  - type: input
+    id: name
+    attributes:
+      label: Tool name
+      description: Official name as shown in docs or repo.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: Repository or documentation link.
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: One or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: best-for
+    attributes:
+      label: Best for
+      description: Use cases (e.g. research, coding, RAG).
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - Stable
+        - Beta
+        - Experimental
+        - Unmaintained
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: License, setup caveats, or Open WebUI version notes.

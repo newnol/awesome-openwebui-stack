@@ -1,86 +1,105 @@
-## Open WebUI Tools
+# Awesome Open WebUI Tools
 
-Custom tools for Open WebUI.
+A curated, English-language index for discovering **tools**, **functions**, **pipes**, and **stack ideas** for [Open WebUI](https://github.com/open-webui/open-webui). It answers three questions:
 
----
+1. **What is worth knowing about?** Notable tools, functions, pipes, integrations, and learning material.
+2. **What is it for?** Use-case-oriented browsing via **categories** and **stacks** (composed setups for a goal).
+3. **Where is the code or deployment story?** Each entry links to a repository, docs, or—when hosted in this repo—a path to real code.
 
-## Tools
-
-### YouTube Transcript (`youtube_transcript.py`)
-
-Tool to fetch transcripts from YouTube videos.
-
-**Features:**
-- Fetch full transcript from YouTube video by URL or video ID
-- Prefer Vietnamese language, fallback to English if not available
-- Returns transcript as segments and full text
-
-**Dependencies:**
-```bash
-pip install youtube-transcript-api
-```
-
-**File:** `tools/youtube_transcript.py`
+This repository is intentionally **catalog-first**: it is not a lab image, not a production deploy repo, and not a place for large application codebases. See [Scope and boundaries](#scope-and-boundaries).
 
 ---
 
-### YouTube Info (`youtube_info.py`)
+## Who this is for
 
-Tool to extract detailed information from YouTube videos (title, description).
-
-**Features:**
-- Extract full title and description from YouTube video
-- Uses Selenium to access `ytInitialPlayerResponse` JavaScript variable
-- Supports headless mode
-
-**Dependencies:**
-```bash
-pip install selenium
-```
-
-**File:** `tools/youtube_info.py`
+- People choosing components for Open WebUI (chat, RAG, coding, automation, self-hosting).
+- Contributors who want a clear format for submissions and reviews.
+- Teams comparing **stacks** (combinations of tools, models, and infra patterns) for a specific goal.
 
 ---
 
-### Diagram Generator (`diagram_generator.py`)
+## Selection criteria (high level)
 
-Tool to generate cloud system architecture diagrams using the `diagrams` library.
-
-**Features:**
-- Generate cloud system architecture diagrams (AWS, GCP, Azure, Kubernetes, etc.)
-- Accepts Python code to create diagrams
-- Renders diagrams as image files (PNG, JPG, PDF, SVG)
-
-**Dependencies:**
-```bash
-pip install diagrams
-```
-
-**System Requirements:**
-- Graphviz (requires separate installation):
-  - macOS: `brew install graphviz`
-  - Ubuntu/Debian: `sudo apt-get install graphviz`
-  - Windows: Download from https://graphviz.org/download/
-
-**File:** `tools/diagram_generator.py`
-
-**See also:** `tools/DIAGRAM_GENERATOR_README.md` for detailed usage and examples.
+Entries should be **useful**, **maintained or clearly labeled**, and **properly attributed**. We prefer items with public source or official docs. See [docs/review-criteria.md](docs/review-criteria.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-### Auto Tool Filter (`auto_tool_filter.py`)
+## Quick navigation
 
-Tool to automatically filter and select appropriate tools based on user query.
+| Browse by | Description |
+|-----------|-------------|
+| [catalog/tools.md](catalog/tools.md) | Python tools (callable from the UI) |
+| [catalog/functions.md](catalog/functions.md) | Functions (filters, actions, etc.) |
+| [catalog/pipes.md](catalog/pipes.md) | Pipes (model routing, custom pipelines) |
+| [catalog/stacks.md](catalog/stacks.md) | Stack ideas and references (composed setups) |
+| [catalog/integrations.md](catalog/integrations.md) | External services and connection patterns |
+| [catalog/learning-resources.md](catalog/learning-resources.md) | Docs, tutorials, official references |
 
-**Features:**
-- Automatically analyze query and select appropriate tools
-- Uses LLM to evaluate and filter tools
-- Supports multi-tool selection when needed
+**By goal (not by component type):**
 
-**File:** `tools/auto_tool_filter.py`
+| Category | File |
+|----------|------|
+| Coding | [categories/coding.md](categories/coding.md) |
+| Research | [categories/research.md](categories/research.md) |
+| RAG | [categories/rag.md](categories/rag.md) |
+| Automation | [categories/automation.md](categories/automation.md) |
+| Productivity | [categories/productivity.md](categories/productivity.md) |
+| Multi-agent | [categories/multi-agent.md](categories/multi-agent.md) |
+| Self-hosting | [categories/self-hosting.md](categories/self-hosting.md) |
+| Security | [categories/security.md](categories/security.md) |
+
+**Opinionated recipes:**
+
+| Stack | File |
+|-------|------|
+| Low-cost local | [stacks/low-cost-local.md](stacks/low-cost-local.md) |
+| Coding assistant | [stacks/coding-assistant.md](stacks/coding-assistant.md) |
+| Research agent | [stacks/research-agent.md](stacks/research-agent.md) |
+| RAG workbench | [stacks/rag-workbench.md](stacks/rag-workbench.md) |
+| Privacy-first | [stacks/privacy-first.md](stacks/privacy-first.md) |
+
+---
+
+## Featured stacks (start here)
+
+- **[Coding assistant](stacks/coding-assistant.md)** — IDE-like workflows inside chat.
+- **[Research agent](stacks/research-agent.md)** — retrieval, citations, and verification-oriented setups.
+- **[RAG workbench](stacks/rag-workbench.md)** — documents, embeddings, and chat over your data.
+- **[Low-cost local](stacks/low-cost-local.md)** — small hardware, local models, pragmatic trade-offs.
+- **[Privacy-first](stacks/privacy-first.md)** — data boundaries and deployment posture.
+
+---
+
+## In-repo reference implementations
+
+This repository also holds **small sample tools and pipes** used as examples when learning or testing Open WebUI. They are listed in [catalog/tools.md](catalog/tools.md) and [catalog/pipes.md](catalog/pipes.md) with paths under `tools/` and `function/`. For deeper Open WebUI internals used when writing functions, see [docs/README.md](docs/README.md) (legacy internal API notes).
+
+---
+
+## Contributing
+
+- [CONTRIBUTING.md](CONTRIBUTING.md) — how to propose additions.
+- [docs/submission-guidelines.md](docs/submission-guidelines.md) — entry format and quality bar.
+- [docs/review-criteria.md](docs/review-criteria.md) — what maintainers check.
+- [docs/category-guide.md](docs/category-guide.md) — choosing categories and stacks.
+- [docs/faq.md](docs/faq.md) — common questions.
+
+Use GitHub Issues from [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) for structured submissions.
+
+---
+
+## Scope and boundaries
+
+| In this repo | Not in this repo (put elsewhere) |
+|--------------|----------------------------------|
+| Curated lists, stack write-ups, links | Full production `docker-compose` or fleet configs as the main artifact |
+| Short docs and criteria | Heavy CI that runs a full Open WebUI farm |
+| Pointers to code | Large tool/function codebases (prefer their own repos) |
+
+A practical split: **this repo** = discovery and curation; a separate **lab** repo = templates and experiments; a separate **stack** repo = deployment and infra.
 
 ---
 
 ## License
 
-MIT
+This catalog is licensed under the MIT License — see [LICENSE](LICENSE).

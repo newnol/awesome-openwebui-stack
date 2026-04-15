@@ -1,0 +1,23 @@
+name: Broken link
+description: Report a broken or moved link in the catalog
+title: "[Link] "
+labels: ["docs", "maintenance"]
+body:
+  - type: input
+    id: file
+    attributes:
+      label: File path
+      description: e.g. catalog/tools.md
+    validations:
+      required: true
+  - type: textarea
+    id: broken
+    attributes:
+      label: Broken URL or anchor
+    validations:
+      required: true
+  - type: textarea
+    id: replacement
+    attributes:
+      label: Suggested replacement (if known)
+      description: New URL or note if content was removed.
