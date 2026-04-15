@@ -40,7 +40,8 @@ Outputs in `scratch/community-raw/`:
 
 1. Open the generated `.json` / `.ndjson` in `scratch/community-raw/`.
 2. For each item you want to list publicly, add **Purpose**, **Best for**, **Status**, and notes to [catalog/tools.md](../catalog/tools.md), [catalog/functions.md](../catalog/functions.md), or [catalog/pipes.md](../catalog/pipes.md) per [submission-guidelines.md](submission-guidelines.md).
-3. Commit **only** catalog changes; keep raw dumps local.
+3. You can also group related items into **simple stacks** under [stacks/](../stacks/) (see `community-*.md` examples and [catalog/stacks.md](../catalog/stacks.md)).
+4. Commit **only** catalog changes; keep raw dumps local.
 
 ## Optional rating fields
 

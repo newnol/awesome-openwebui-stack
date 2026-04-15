@@ -13,6 +13,7 @@ Source: [openwebui-extension](https://github.com/newnol/openwebui-extension).
 
 - [Low-cost local](../stacks/low-cost-local.md)
 - [Coding assistant](../stacks/coding-assistant.md)
+- [Multi-model + heavy tooling](../stacks/community-multi-model-tools.md) — community-inspired
 
 ## See also
 

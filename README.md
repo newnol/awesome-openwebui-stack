@@ -58,6 +58,8 @@ Entries should be **useful**, **maintained or clearly labeled**, and **properly 
 | RAG workbench | [stacks/rag-workbench.md](stacks/rag-workbench.md) |
 | Privacy-first | [stacks/privacy-first.md](stacks/privacy-first.md) |
 
+**Community-inspired (simple):** [Multi-model tools](stacks/community-multi-model-tools.md) · [Coding + debug](stacks/community-coding-debug.md) · [n8n + WebDAV](stacks/community-automation-n8n.md) · [Claude stack](stacks/community-claude-providers.md) · [Infomaniak](stacks/community-eu-infomaniak.md) · [PDF helper](stacks/community-document-assistant.md) — see [catalog/stacks.md](catalog/stacks.md).
+
 ---
 
 ## Featured stacks (start here)

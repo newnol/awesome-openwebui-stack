@@ -10,6 +10,19 @@
 | RAG workbench | Documents → embeddings → grounded chat | [rag-workbench.md](../stacks/rag-workbench.md) |
 | Privacy-first | Data stays under your control | [privacy-first.md](../stacks/privacy-first.md) |
 
+### Community-inspired (simple recipes)
+
+Derived from a [sample “tools” search](../docs/openwebui-import.md); links point to [openwebui.com](https://openwebui.com) listings—verify before relying on them in production.
+
+| Stack | Goal | Doc |
+|-------|------|-----|
+| Multi-model + heavy tooling | OpenRouter-style routing + parallel tools | [community-multi-model-tools.md](../stacks/community-multi-model-tools.md) |
+| Coding sandbox + debug | Code execution + tool context inspector | [community-coding-debug.md](../stacks/community-coding-debug.md) |
+| Chat → automation + files | n8n + WebDAV | [community-automation-n8n.md](../stacks/community-automation-n8n.md) |
+| Claude providers + bridges | Anthropic + tool bridge | [community-claude-providers.md](../stacks/community-claude-providers.md) |
+| EU / Infomaniak | Infomaniak-hosted AI tools | [community-eu-infomaniak.md](../stacks/community-eu-infomaniak.md) |
+| In-chat PDF | Basic PDF UI in context | [community-document-assistant.md](../stacks/community-document-assistant.md) |
+
 ---
 
 ## How to contribute a stack

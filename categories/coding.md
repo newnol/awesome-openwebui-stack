@@ -9,6 +9,7 @@ Browse items that help with **reading, writing, reviewing, or visualizing code**
 ## Related stacks
 
 - [Coding assistant](../stacks/coding-assistant.md)
+- [Coding sandbox + tool debugging](../stacks/community-coding-debug.md) — community-inspired recipe
 
 ## See also
 

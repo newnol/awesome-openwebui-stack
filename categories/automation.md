@@ -12,6 +12,7 @@ Source for both: [openwebui-extension](https://github.com/newnol/openwebui-exten
 ## Related stacks
 
 - [Coding assistant](../stacks/coding-assistant.md) — when automation supports dev workflows
+- [Chat → automation + files](../stacks/community-automation-n8n.md) — n8n + WebDAV (community-inspired)
 
 ## See also
 
