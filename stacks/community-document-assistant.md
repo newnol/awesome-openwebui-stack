@@ -8,7 +8,7 @@ Do **light PDF work inside chat** (view, basic edits in context) without leaving
 
 | Role | Item | Source |
 |------|------|--------|
-| Function | PDF Tools — rich UI for in-context basic editing | [openwebui.com](https://openwebui.com/f/jeffgranado/pdf_tools_rich_ui_for_in_context_basic_editing_2b4f9a26) |
+| Function | PDF Tools — rich UI for in-context basic editing | [openwebui.com](https://openwebui.com/posts/2b4f9a26-1260-4ef8-bd11-ae5136c6e999) |
 
 ## How it fits together
 

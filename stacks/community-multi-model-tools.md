@@ -8,8 +8,8 @@ Use **many cloud models** through one pipe and run **several tools** without eve
 
 | Role | Item | Source |
 |------|------|--------|
-| Pipe / integration | OpenRouter Integration (350+ models, multimodal, native tools) | [openwebui.com](https://openwebui.com/f/rbb-dev/openrouter_integration_gpt_52_o3_o1_350_models_wit_9ac806c5) |
-| Tool | Parallel Tools | [openwebui.com](https://openwebui.com/t/skyzi000/parallel_tools_1d44cfce) |
+| Pipe / integration | OpenRouter Integration (350+ models, multimodal, native tools) | [openwebui.com](https://openwebui.com/posts/9ac806c5-c7e3-4710-9ff3-ec900739b6db) |
+| Tool | Parallel Tools | [openwebui.com](https://openwebui.com/posts/1d44cfce-d810-49b1-bbcb-52cea19c2dcf) |
 
 ## How it fits together
 

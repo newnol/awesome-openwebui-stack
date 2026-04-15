@@ -8,9 +8,9 @@
 
 | Role | Item | Source |
 |------|------|--------|
-| Tool | Open WebUI Code Execution Tools | [openwebui.com](https://openwebui.com/t/colton/open_webui_code_execution_tools_2o2_618a6082) |
-| Tool | Tools Context Inspector | [openwebui.com](https://openwebui.com/t/jeffreysmith115076ab75/tools_context_inspector_519c365f) |
-| Tool | Parallel Tools | [openwebui.com](https://openwebui.com/t/skyzi000/parallel_tools_1d44cfce) |
+| Tool | Open WebUI Code Execution Tools | [openwebui.com](https://openwebui.com/posts/618a6082-f1be-49c6-aa66-f3554beb5330) |
+| Tool | Tools Context Inspector | [openwebui.com](https://openwebui.com/posts/519c365f-dadd-4ca9-a2ce-7a5a582b7194) |
+| Tool | Parallel Tools | [openwebui.com](https://openwebui.com/posts/1d44cfce-d810-49b1-bbcb-52cea19c2dcf) |
 
 ## How it fits together
 

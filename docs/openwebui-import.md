@@ -6,6 +6,10 @@ Community search is backed by a public JSON API (no browser required):
 
 This repository includes a small script that calls it and writes **local-only** files under `scratch/community-raw/` (gitignored).
 
+## Link format (openwebui.com)
+
+Use **`https://openwebui.com/posts/{post-uuid}`** for shareable links. Paths like `/t/username/slug` or `/f/username/slug` may **redirect to the homepage**; the API still returns `id`—build URLs from that field (the fetch script does this).
+
 ## Prerequisites
 
 - **Node.js 18+** (uses built-in `fetch`).

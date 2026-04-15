@@ -39,20 +39,10 @@ function parseArgs(argv) {
   return out;
 }
 
+/** Public post page (verified 2026-04): /t/user/slug and /f/user/slug redirect to home; use /posts/{uuid}. */
 function communityUrl(item) {
-  const u = item.user?.username;
-  const s = item.slug;
-  if (!u || !s) return null;
-  switch (item.type) {
-    case "tool":
-      return `https://openwebui.com/t/${u}/${s}`;
-    case "function":
-      return `https://openwebui.com/f/${u}/${s}`;
-    case "model":
-      return `https://openwebui.com/models/${u}/${item.data?.model?.id ?? s}`;
-    default:
-      return `https://openwebui.com/posts/${item.id}`;
-  }
+  if (item?.id) return `https://openwebui.com/posts/${item.id}`;
+  return null;
 }
 
 function normalizeItem(raw) {

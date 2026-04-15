@@ -8,8 +8,8 @@ Use **Infomaniak**-hosted AI from Open WebUI when you want a **European provider
 
 | Role | Item | Source |
 |------|------|--------|
-| Function | Infomaniak AI Tools | [openwebui.com](https://openwebui.com/f/owndev/infomaniak_ai_tools_26e7b83f) |
-| Function | Infomaniak AI Tools Pipeline API v2 | [openwebui.com](https://openwebui.com/f/groblochon80194051/infomaniak_ai_tools_pipeline_api_v2_b47d7b13) |
+| Function | Infomaniak AI Tools | [openwebui.com](https://openwebui.com/posts/26e7b83f-e99f-4ecb-9afc-59cfd7ca0c88) |
+| Function | Infomaniak AI Tools Pipeline API v2 | [openwebui.com](https://openwebui.com/posts/b47d7b13-0b42-4818-b845-409f06600d32) |
 
 ## How it fits together
 

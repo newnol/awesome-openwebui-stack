@@ -8,8 +8,8 @@ Let the assistant **trigger workflows** (e.g. n8n) and **read/write files** via 
 
 | Role | Item | Source |
 |------|------|--------|
-| Tool | n8n_tools | [openwebui.com](https://openwebui.com/t/willyma/n8n_tools_5aefa68c) |
-| Tool | WebDAV Toolset | [openwebui.com](https://openwebui.com/t/cdmsin/webdav_toolset_d61f1cbb) |
+| Tool | n8n_tools | [openwebui.com](https://openwebui.com/posts/5aefa68c-d630-4399-a211-d28dcff7df03) |
+| Tool | WebDAV Toolset | [openwebui.com](https://openwebui.com/posts/d61f1cbb-8ee8-4c71-b158-2f755a6584ed) |
 
 ## How it fits together
 

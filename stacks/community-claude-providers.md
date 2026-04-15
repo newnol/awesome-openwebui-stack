@@ -8,8 +8,8 @@ Standardize on **Anthropic** models inside Open WebUI while optionally **bridgin
 
 | Role | Item | Source |
 |------|------|--------|
-| Function | Anthropic API Integration (Claude 4 / 4.5 / Opus + tools) | [openwebui.com](https://openwebui.com/f/bermont/anthropic_api_integration_claude_4_45_opus_45_exte_1a167991) |
-| Pipe / function | Claude OpenAI Tools Bridge Pipe | [openwebui.com](https://openwebui.com/f/jiangnangenius/anthropic_7e79c01f) |
+| Function | Anthropic API Integration (Claude 4 / 4.5 / Opus + tools) | [openwebui.com](https://openwebui.com/posts/1a167991-2684-47f6-a695-bdfc2c1f54a1) |
+| Pipe / function | Claude OpenAI Tools Bridge Pipe | [openwebui.com](https://openwebui.com/posts/7e79c01f-ade8-4eed-a9c1-88971736f86b) |
 
 ## How it fits together
 
