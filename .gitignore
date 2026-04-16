@@ -116,3 +116,6 @@ scratch/community-raw/*
 
 node_modules/
 package-lock.json
+
+# Stack deploy secrets (commit .env.example only)
+stacks/**/.env

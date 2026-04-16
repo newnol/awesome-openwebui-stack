@@ -1,0 +1,89 @@
+version: "3.8"
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui@sha256:b8095f79a6a8ffad8f830bdacc9b5b0aef805689b31bca0b065cc2424d3cfaeb
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - ENABLE_VERSION_UPDATE_CHECK=false
+      - ENABLE_FORWARD_USER_INFO_HEADERS=true
+      - ENABLE_ADMIN_CHAT_ACCESS=false
+    volumes:
+      - open-webui:/app/backend/data
+    networks:
+      - ai-network
+
+  open-terminal:
+    image: ghcr.io/open-webui/open-terminal:latest
+    container_name: open-terminal
+    ports:
+      - "18000:8000"
+    restart: unless-stopped
+    environment:
+      - OPEN_TERMINAL_API_KEY=${OPEN_TERMINAL_API_KEY:-change-this-key}
+    volumes:
+      - open-terminal:/home/user
+    networks:
+      - ai-network
+
+  litellm:
+    image: docker.litellm.ai/berriai/litellm:main-latest
+    volumes:
+      - ./config.yaml:/app/litellm-config.yaml
+    command: ["--config", "/app/litellm-config.yaml"]
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgresql://llmproxy:${POSTGRES_PASSWORD:-dbpassword9090}@db:5432/litellm
+      STORE_MODEL_IN_DB: "True"
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - db
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python3 -c 'import urllib.request; urllib.request.urlopen(\"http://localhost:4000/health/liveliness\")' || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - ai-network
+
+  db:
+    image: postgres:16
+    restart: always
+    container_name: litellm_db
+    environment:
+      POSTGRES_DB: litellm
+      POSTGRES_USER: llmproxy
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dbpassword9090}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d litellm -U llmproxy"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    networks:
+      - ai-network
+
+volumes:
+  open-webui:
+  open-terminal:
+  postgres_data:
+
+networks:
+  ai-network:
+    external: true

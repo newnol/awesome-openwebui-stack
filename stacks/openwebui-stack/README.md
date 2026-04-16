@@ -37,13 +37,23 @@ Document the machine (or VM) that runs this stack so others can size and reprodu
 
 ## Deployment (Docker Compose)
 
-Commit a **`docker-compose.yml`** in this folder (and **`.env.example`** without secrets) when you want a reproducible deploy. The compose file should include at least:
+**[docker-compose.yml](docker-compose.yml)** runs **Open WebUI**, **Open Terminal**, **LiteLLM** (proxy), and **Postgres** for LiteLLM’s DB. Monitoring stack (**Prometheus**, **Grafana**, **Dozzle**, **Loki**, **Promtail**) is omitted on purpose.
 
-1. **Open WebUI** — Chat UI, tools, functions; **database: SQLite** (simple single-node) or switch to Postgres if you need HA.
-2. **LiteLLM** — OpenAI-compatible **gateway** for multiple providers; **store and route keys**, optional **spend tracking** per model or key.
-3. **Open Terminal** (or your chosen **code execution** service) — Lets the assistant run commands/snippets in a **controlled** environment; **never** expose an unrestricted host shell.
+**Prerequisites**
 
-Optional: reverse proxy (Caddy / Traefik) for HTTPS, workers for heavy RAG ingestion.
+1. Docker network **`ai-network`** must exist (`external: true`). Create once: `docker network create ai-network`
+2. **`config.yaml`** next to the compose file (start from [config.yaml.example](config.yaml.example)).
+3. **`.env`** — copy [`.env.example`](.env.example) to `.env` and set secrets. Compose uses it for **`${OPEN_TERMINAL_API_KEY}`**, **`${POSTGRES_PASSWORD}`**, and **`litellm`’s `DATABASE_URL`**. **`env_file: .env`** is set on **open-webui** and **litellm** so optional Open WebUI / provider variables in the same file are passed into those containers (see comments in `.env.example`).
+
+**Run**
+
+`docker compose up -d`
+
+Set **`OPEN_TERMINAL_API_KEY`** for Open Terminal. Point Open WebUI at LiteLLM’s OpenAI-compatible URL (e.g. `http://litellm:4000` from other containers, or `http://<host>:4000` from the host).
+
+**Postgres volume:** compose uses a normal named volume `postgres_data`. To **reuse** an existing volume instead, replace the `postgres_data:` entry under `volumes:` with `external: true` and `name: <your_volume_name>`.
+
+**Ports:** Postgres is published on **5432** — restrict with firewall or remove the `ports:` mapping on `db` if only LiteLLM needs DB access on the Docker network.
 
 ## List of tools
 

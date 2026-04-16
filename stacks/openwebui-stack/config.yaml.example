@@ -1,0 +1,11 @@
+# Copy to config.yaml. Add providers under model_list when ready: https://docs.litellm.ai/docs/proxy/configs
+
+general_settings:
+  user_header_mappings:
+    - header_name: X-OpenWebUI-User-Id
+      litellm_user_role: internal_user
+    - header_name: X-OpenWebUI-User-Email
+      litellm_user_role: customer
+
+litellm_settings:
+  drop_params: true
