@@ -1,5 +1,9 @@
 # FAQ
 
+## Is this repo a tutorial for building tools?
+
+**No.** It is a **showcase**: short blurbs and links to **finished** stacks, tools, functions, and pipes. To learn how to write extensions, use [Open WebUI documentation](https://docs.openwebui.com/) and the linked upstream repositories.
+
 ## What is the difference between catalog and categories?
 
 - **Catalog** (`catalog/`) groups by **artifact type**: tools, functions, pipes, etc.
@@ -9,11 +13,11 @@ Use both: some readers know they need a “tool”; others only know they want �
 
 ## What is a “stack” here?
 
-An opinionated **combination** of models, tools, functions, pipes, and sometimes infra patterns to meet a goal (for example “research agent” or “low-cost local”). Stacks live under [stacks/](../stacks/) and are indexed from [catalog/stacks.md](../catalog/stacks.md).
+A **reference write-up** under `stacks/<name>/README.md`—see [stacks/README.md](../stacks/README.md) and [catalog/stacks.md](../catalog/stacks.md). Each stack lists an **author GitHub** link. Example: [openwebui-stack](../stacks/openwebui-stack/). New stacks: copy [template-full-stack/README.md](../stacks/template-full-stack/README.md); details in [stack-format.md](stack-format.md).
 
 ## Does this repo ship production deployments?
 
-No. This repo is for **curation and discovery**. Deployment-heavy content belongs in a dedicated infra or “stack” repository; we link out to it.
+Primarily **curation**: prose and optional small **`docker-compose.yml`** / **`.env.example`** next to a stack `README.md` when they help reproducibility. Large or secret-heavy infra should stay in a **separate** repository; link it from the stack doc.
 
 ## Can I submit my project?
 
@@ -23,6 +27,6 @@ Yes. Read [submission-guidelines.md](submission-guidelines.md) and open an issue
 
 Start with [Open WebUI documentation](https://docs.openwebui.com/). This catalog is independent and may link there frequently.
 
-## What about the Vietnamese notes in some files?
+## What about older bilingual notes?
 
-Legacy developer notes may remain bilingual or non-English in deep technical paths. The **curated catalog** (README, `catalog/`, `categories/`, `stacks/`, contributor docs) is English-first.
+The **catalog** (README, `catalog/`, `categories/`, `stacks/`, contributor `docs/`) is **English-first**. Deep technical authoring for tools is **out of scope** here—see [Open WebUI documentation](https://docs.openwebui.com/).

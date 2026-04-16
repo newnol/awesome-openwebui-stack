@@ -5,7 +5,7 @@ Retrieval-augmented generation: **documents**, **chunking**, **embeddings**, **v
 ## Starting points
 
 - Open WebUI knowledge features — see [official docs](https://docs.openwebui.com/).
-- [RAG workbench stack](../stacks/rag-workbench.md) — composed view of a typical setup.
+- [Open WebUI stack](../stacks/openwebui-stack/) — OCR, embeddings, rerank (see README)
 
 ## Related catalog files
 

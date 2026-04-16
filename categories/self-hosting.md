@@ -5,13 +5,12 @@ Running Open WebUI **on your own machines** or **your own cloud account**: updat
 ## Principles (not prescriptions)
 
 - Pin versions and track Open WebUI release notes.
-- Separate **secrets** from catalog docs (no `.env` templates in this repo as the main artifact).
-- Prefer linking to your own infra repo for compose and production config.
+- Separate **secrets** from catalog docs (optional **`.env.example`** next to a stack `README.md` is fine—never commit real secrets).
+- Large production compose can live in your own infra repo; link it from the stack README.
 
-## Related stacks
+## Related stack
 
-- [Privacy-first](../stacks/privacy-first.md)
-- [Low-cost local](../stacks/low-cost-local.md)
+- [Open WebUI stack](../stacks/openwebui-stack/) — host sizing, Docker Compose outline
 
 ## See also
 

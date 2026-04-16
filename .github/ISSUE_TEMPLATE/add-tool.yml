@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Read `docs/submission-guidelines.md` before submitting.
+        List **finished**, installable tools with a stable **source** link. This catalog is a showcase—not a tutorial repo. See `docs/submission-guidelines.md`.
   - type: input
     id: name
     attributes:

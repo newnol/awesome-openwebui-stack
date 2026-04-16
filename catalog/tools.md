@@ -10,7 +10,7 @@ Source code for the following lives in **[newnol/openwebui-extension](https://gi
 - **Purpose:** Fetch transcripts from YouTube by URL or video ID.
 - **Best for:** Research, note-taking, quoted evidence from video content.
 - **Category:** Research, Productivity
-- **Stack fit:** [Research agent](../stacks/research-agent.md)
+- **Stack fit:** [Open WebUI stack](../stacks/openwebui-stack/)
 - **Status:** See upstream repository
 - **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
 - **Notes:** Typically requires `youtube-transcript-api`.
@@ -19,7 +19,7 @@ Source code for the following lives in **[newnol/openwebui-extension](https://gi
 - **Purpose:** Extract title and description from YouTube pages (often Selenium-based).
 - **Best for:** Metadata for research workflows.
 - **Category:** Research
-- **Stack fit:** [Research agent](../stacks/research-agent.md)
+- **Stack fit:** [Open WebUI stack](../stacks/openwebui-stack/)
 - **Status:** See upstream repository
 - **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
 - **Notes:** May require `selenium` and a suitable browser/driver setup.
@@ -28,7 +28,7 @@ Source code for the following lives in **[newnol/openwebui-extension](https://gi
 - **Purpose:** Generate architecture diagrams from Python (e.g. `diagrams` library).
 - **Best for:** Visualizing systems, cloud diagrams from code.
 - **Category:** Coding, Productivity
-- **Stack fit:** [Coding assistant](../stacks/coding-assistant.md)
+- **Stack fit:** [Open WebUI stack](../stacks/openwebui-stack/)
 - **Status:** See upstream repository
 - **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
 - **Notes:** Often requires Graphviz system packages.
@@ -37,7 +37,7 @@ Source code for the following lives in **[newnol/openwebui-extension](https://gi
 - **Purpose:** Use an LLM to pick relevant tools from a larger toolset for a query.
 - **Best for:** Reducing noise when many tools are enabled.
 - **Category:** Multi-agent, Automation
-- **Stack fit:** [Coding assistant](../stacks/coding-assistant.md) when many tools are enabled
+- **Stack fit:** [Open WebUI stack](../stacks/openwebui-stack/) when many tools are enabled
 - **Status:** See upstream repository
 - **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
 

@@ -110,9 +110,7 @@ test
 
 *.sh
 
-scirpts/
-
-# Local scrapes from openwebui.com (see docs/openwebui-import.md)
+# Local-only files under scratch/ (optional)
 scratch/community-raw/*
 !scratch/community-raw/.gitkeep
 

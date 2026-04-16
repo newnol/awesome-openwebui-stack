@@ -1,6 +1,6 @@
 # Category guide
 
-Categories describe **why** someone would use something, not **what** Open WebUI primitive it is.
+Categories describe **why** someone would use something, not **what** Open WebUI primitive it is. Use them to **introduce finished listings** in the catalog, not to host build-from-scratch guides.
 
 | Category | When to use |
 |----------|-------------|
@@ -18,6 +18,6 @@ An entry can appear in multiple categories. Prefer **two or fewer** primary cate
 ## Relationship to stacks
 
 - **Categories** = broad intent.
-- **Stacks** = a named recipe (goal, components, trade-offs). See [../stacks/](../stacks/).
+- **Stacks** = named recipes under `stacks/*/README.md` (see [../stacks/README.md](../stacks/README.md)).
 
 When a stack doc exists, link it from **Stack fit** in the catalog entry.

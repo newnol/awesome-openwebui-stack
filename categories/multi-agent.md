@@ -9,11 +9,9 @@ Patterns with **multiple models**, **routers**, or **delegated roles**—includi
 
 Source: [openwebui-extension](https://github.com/newnol/openwebui-extension).
 
-## Related stacks
+## Related stack
 
-- [Low-cost local](../stacks/low-cost-local.md)
-- [Coding assistant](../stacks/coding-assistant.md)
-- [Multi-model + heavy tooling](../stacks/community-multi-model-tools.md) — community-inspired
+- [Open WebUI stack](../stacks/openwebui-stack/) — LiteLLM routing and multiple providers
 
 ## See also
 

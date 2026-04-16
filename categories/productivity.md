@@ -6,10 +6,9 @@ General **knowledge work** beyond coding: writing, meeting notes, personal knowl
 
 - **YouTube Transcript** — turn video content into text for notes; code in [openwebui-extension](https://github.com/newnol/openwebui-extension) ([catalog](../catalog/tools.md)).
 
-## Related stacks
+## Related stack
 
-- [Research agent](../stacks/research-agent.md)
-- [RAG workbench](../stacks/rag-workbench.md)
+- [Open WebUI stack](../stacks/openwebui-stack/)
 
 ## See also
 

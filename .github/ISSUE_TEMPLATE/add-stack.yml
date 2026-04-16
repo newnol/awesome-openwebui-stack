@@ -1,12 +1,12 @@
 name: Add stack
-description: Propose a new stack write-up (goal-oriented recipe)
+description: Propose a finished stack others can adopt (showcase README + optional compose)
 title: "[Stack] "
 labels: ["catalog", "stack"]
 body:
   - type: markdown
     attributes:
       value: |
-        Stacks live under `stacks/`. See `docs/category-guide.md`.
+        Describe a **stack you already run or publish** for the community—not a generic tutorial. Folder `stacks/<name>/` with `README.md` (optional `docker-compose.yml`). Copy `stacks/template-full-stack/README.md`. Include **Author (GitHub)** and **host / hardware** if relevant. See `docs/stack-format.md`.
   - type: input
     id: title
     attributes:
@@ -14,11 +14,25 @@ body:
       description: Short name (e.g. "Privacy-first lab").
     validations:
       required: true
+  - type: input
+    id: author_github
+    attributes:
+      label: Author GitHub URL
+      description: Profile or organization, e.g. https://github.com/yourusername
+    validations:
+      required: true
   - type: textarea
     id: goal
     attributes:
       label: Goal
       description: Who is this for and what outcome?
+    validations:
+      required: true
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Host / hardware configuration
+      description: CPU, RAM, disk, GPU (if any), OS—what you run this stack on.
     validations:
       required: true
   - type: textarea
@@ -39,4 +53,4 @@ body:
     id: links
     attributes:
       label: Links to code or deploy guides
-      description: External repos encouraged. This catalog repo does not host production deploy files.
+      description: External repos encouraged. Optional—add `docker-compose.yml` under `stacks/<name>/` next to `README.md` when it helps reproducibility.

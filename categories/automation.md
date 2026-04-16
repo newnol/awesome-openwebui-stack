@@ -9,10 +9,9 @@ Glue between **chat**, **APIs**, and **systems**: scheduled tasks, ticketing, CI
 
 Source for both: [openwebui-extension](https://github.com/newnol/openwebui-extension).
 
-## Related stacks
+## Related stack
 
-- [Coding assistant](../stacks/coding-assistant.md) — when automation supports dev workflows
-- [Chat → automation + files](../stacks/community-automation-n8n.md) — n8n + WebDAV (community-inspired)
+- [Open WebUI stack](../stacks/openwebui-stack/) — reference compose and tooling layout
 
 ## See also
 

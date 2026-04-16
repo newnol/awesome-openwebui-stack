@@ -2,9 +2,7 @@
 
 Open WebUI **functions** include filters, actions, and other server-side hooks (see [functions documentation](https://docs.openwebui.com/features/plugin/functions/)).
 
-## In this repository
-
-Internal API notes for writing functions (pipes, filters, tools) against Open WebUI utilities live under [docs/](../docs/README.md). Those files are **developer reference**, not a curated list of third-party function packages.
+This file lists **finished** function packages (installable from their **Source** links). To **write** new functions, use [Open WebUI functions documentation](https://docs.openwebui.com/features/plugin/functions/)—not this repo.
 
 ---
 

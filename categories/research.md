@@ -6,9 +6,9 @@ Use cases: **web grounding**, **summaries**, **quotes**, and **source comparison
 
 - **YouTube Transcript** / **YouTube Info** — video text and metadata; code in [openwebui-extension](https://github.com/newnol/openwebui-extension) ([catalog](../catalog/tools.md)).
 
-## Related stacks
+## Related stack
 
-- [Research agent](../stacks/research-agent.md)
+- [Open WebUI stack](../stacks/openwebui-stack/) — web search + RAG patterns
 
 ## See also
 

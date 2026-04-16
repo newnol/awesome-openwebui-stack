@@ -8,7 +8,7 @@
 - **Purpose:** Route requests to models based on keyword rules (e.g., cost vs capability).
 - **Best for:** Multi-model setups, cost control, organization-wide defaults.
 - **Category:** Multi-agent, Automation
-- **Stack fit:** [Coding assistant](../stacks/coding-assistant.md), [Low-cost local](../stacks/low-cost-local.md)
+- **Stack fit:** [Open WebUI stack](../stacks/openwebui-stack/)
 - **Status:** See upstream repository (may depend on LiteLLM for multi-provider routing).
 - **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
 - **Notes:** Implementation and valves are documented alongside code in that repository.

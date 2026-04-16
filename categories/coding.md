@@ -6,10 +6,9 @@ Browse items that help with **reading, writing, reviewing, or visualizing code**
 
 - **Diagram Generator** — architecture diagrams from Python; code in [openwebui-extension](https://github.com/newnol/openwebui-extension) ([catalog](../catalog/tools.md)).
 
-## Related stacks
+## Related stack
 
-- [Coding assistant](../stacks/coding-assistant.md)
-- [Coding sandbox + tool debugging](../stacks/community-coding-debug.md) — community-inspired recipe
+- [Open WebUI stack](../stacks/openwebui-stack/) — cloud-style coding, LiteLLM, code execution path
 
 ## See also
 

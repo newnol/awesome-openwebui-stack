@@ -1,5 +1,7 @@
 # Submission guidelines
 
+Listings here are **introductions to finished work**: a stack you run, or a tool/function/pipe others can install from your linked source. **Do not** submit tutorial-only content or stubs without a working artifact—use [Open WebUI docs](https://docs.openwebui.com/) for “how to build.”
+
 ## Entry format
 
 Use one of these patterns so the catalog stays scannable.
@@ -47,7 +49,7 @@ Use one of these patterns so the catalog stays scannable.
 | Tool | [catalog/tools.md](../catalog/tools.md) |
 | Function | [catalog/functions.md](../catalog/functions.md) |
 | Pipe | [catalog/pipes.md](../catalog/pipes.md) |
-| Stack recipe | [stacks/](../stacks/) and a one-line pointer in [catalog/stacks.md](../catalog/stacks.md) |
+| **Stack** (showcase README) | New folder **`stacks/<name>/`** with **`README.md`** including **Author (GitHub)** (copy [template-full-stack](../stacks/template-full-stack/README.md); optional `docker-compose.yml`) per [stack-format.md](stack-format.md) + row in [catalog/stacks.md](../catalog/stacks.md) |
 | Integration | [catalog/integrations.md](../catalog/integrations.md) |
 | Learning | [catalog/learning-resources.md](../catalog/learning-resources.md) |
 

@@ -1,33 +1,36 @@
 # Contributing
 
-Thank you for helping keep this list accurate and useful.
+Thank you for helping keep this showcase accurate.
 
 ## Principles
 
-- **English** for all user-facing catalog text (README, `catalog/`, `categories/`, `stacks/`, `docs/`).
-- **Evidence**: prefer links to public repositories, official docs, or tagged releases.
-- **Honest status**: if something is experimental or unmaintained, say so in the entry.
+- **English** for catalog-facing text (`README.md`, `catalog/`, `categories/`, `stacks/`, contributor `docs/`).
+- **Evidence:** stable link to a repo, release, or official/community post.
+- **Honest status** if something is beta or unmaintained.
 
-## What to add
+## What belongs here
 
-- **Tools, functions, pipes** that work with Open WebUI (or are clearly adaptable).
-- **Integrations** (APIs, auth patterns, vector DBs) with a short “how it fits Open WebUI” note.
-- **Stacks**: opinionated combinations with goals, components, trade-offs, and links to code or deploy guides **elsewhere**.
+- **Tools, functions, pipes** that are **usable as-is** (or clearly documented install steps on the linked source).
+- **Stacks** you actually run or publish as a **finished recipe** (`stacks/<name>/README.md`).
+- **Integrations** others can adopt with a short “how it fits Open WebUI” note.
 
-## What not to add as the main contribution
+**Not in scope for this repo:** tutorials on writing Open WebUI extensions from scratch—use [Open WebUI documentation](https://docs.openwebui.com/) and your tool’s repository for that.
 
-- Large new codebases (link an external repo instead).
-- Production deployment files as the primary deliverable (point to a dedicated infra repo or guide).
+## What not to add
+
+- Placeholder or “coming soon” entries without a working link.
+- Large new codebases (link the external repo instead).
+- Secrets or production-only configs as the sole artifact.
 
 ## Process
 
 1. Read [docs/submission-guidelines.md](docs/submission-guidelines.md) and [docs/review-criteria.md](docs/review-criteria.md).
-2. Open an issue using the appropriate template under [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/), or open a PR directly.
-3. Use the [entry format](docs/submission-guidelines.md#entry-format) so listings stay consistent.
+2. Open an issue from [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) or send a PR.
+3. Follow the [entry format](docs/submission-guidelines.md#entry-format).
 
 ## Pull requests
 
-- One logical change per PR (e.g. one new tool entry, or one new stack document).
-- Fix broken links in the same area you touch when you notice them.
+- One logical change per PR when possible.
+- Fix broken links in the same area you touch.
 
-See [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md) for the PR checklist.
+See [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).

@@ -1,34 +1,20 @@
 # Stacks
 
-**Stacks** are goal-oriented combinations of models, tools, functions, pipes, and deployment choices. Detailed write-ups live under [stacks/](../stacks/).
+A **stack** is a **showcase** write-up for a **finished** setup you recommend: use case, **author (GitHub)**, **host hardware** if relevant, services/tools, and outbound links. Format: **[docs/stack-format.md](../docs/stack-format.md)**.
 
-| Stack | Goal | Doc |
-|-------|------|-----|
-| Low-cost local | Run useful assistants on modest hardware | [low-cost-local.md](../stacks/low-cost-local.md) |
-| Coding assistant | Code read/write, review, diagrams | [coding-assistant.md](../stacks/coding-assistant.md) |
-| Research agent | Search, summarize, cite | [research-agent.md](../stacks/research-agent.md) |
-| RAG workbench | Documents → embeddings → grounded chat | [rag-workbench.md](../stacks/rag-workbench.md) |
-| Privacy-first | Data stays under your control | [privacy-first.md](../stacks/privacy-first.md) |
+| Stack | Goal | Author (GitHub) | Doc |
+|-------|------|-----------------|-----|
+| Open WebUI (cloud coding, LiteLLM, Tavily, RAG) | Claude-style cloud, keys in one place, cost tracking | [@newnol](https://github.com/newnol) | [openwebui-stack/](../stacks/openwebui-stack/) |
 
-### Community-inspired (simple recipes)
-
-Derived from a [sample “tools” search](../docs/openwebui-import.md); links point to [openwebui.com](https://openwebui.com) listings—verify before relying on them in production.
-
-| Stack | Goal | Doc |
-|-------|------|-----|
-| Multi-model + heavy tooling | OpenRouter-style routing + parallel tools | [community-multi-model-tools.md](../stacks/community-multi-model-tools.md) |
-| Coding sandbox + debug | Code execution + tool context inspector | [community-coding-debug.md](../stacks/community-coding-debug.md) |
-| Chat → automation + files | n8n + WebDAV | [community-automation-n8n.md](../stacks/community-automation-n8n.md) |
-| Claude providers + bridges | Anthropic + tool bridge | [community-claude-providers.md](../stacks/community-claude-providers.md) |
-| EU / Infomaniak | Infomaniak-hosted AI tools | [community-eu-infomaniak.md](../stacks/community-eu-infomaniak.md) |
-| In-chat PDF | Basic PDF UI in context | [community-document-assistant.md](../stacks/community-document-assistant.md) |
+**Template** for a new stack folder: [template-full-stack/README.md](../stacks/template-full-stack/README.md).
 
 ---
 
-## How to contribute a stack
+## How to contribute
 
-1. Add a new file under [stacks/](../stacks/) with goal, components, trade-offs, and **links to code or deploy guides** (external repos encouraged).
-2. Add one row to the table above.
-3. Cross-link from relevant [categories/](../categories/) pages.
+1. Copy [stacks/template-full-stack/README.md](../stacks/template-full-stack/README.md) to `stacks/<your-name>/README.md`.
+2. Fill the **Author** section with a GitHub user or org URL.
+3. Add a row to the table above (or open a PR for maintainers to add it).
+4. Optional: commit `docker-compose.yml` and `.env.example` next to `README.md` (no secrets).
 
 See [submission guidelines](../docs/submission-guidelines.md).

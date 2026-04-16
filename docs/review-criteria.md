@@ -1,6 +1,6 @@
 # Review criteria
 
-Maintainers use this checklist when accepting catalog changes.
+Maintainers use this checklist when accepting catalog changes. Entries should be **share-ready** (something a reader can adopt from the link), not in-repo drafts or authoring lessons.
 
 ## Correctness
 
