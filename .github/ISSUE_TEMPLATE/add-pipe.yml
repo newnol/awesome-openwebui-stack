@@ -1,16 +1,16 @@
-name: Add tool
-description: Suggest a tool for the catalog
-title: "[Tool] "
-labels: ["catalog", "tool"]
+name: Add pipe
+description: Suggest a pipe (model routing, custom pipeline) for the catalog
+title: "[Pipe] "
+labels: ["catalog", "pipe"]
 body:
   - type: markdown
     attributes:
       value: |
-        List **finished**, installable tools with a stable **source** link. This catalog is a showcase—not a tutorial repo. See `docs/submission-guidelines.md`.
+        List **finished**, installable pipes with a stable **source** link. This catalog is a showcase—not a tutorial repo. Entries land in `catalog/pipes.md`. See `docs/submission-guidelines.md`.
   - type: input
     id: name
     attributes:
-      label: Tool name
+      label: Pipe name
       description: Official name as shown in docs or repo.
     validations:
       required: true
@@ -25,21 +25,21 @@ body:
     id: purpose
     attributes:
       label: Purpose
-      description: One or two sentences.
+      description: One or two sentences (e.g. route requests by rules).
     validations:
       required: true
   - type: textarea
     id: best-for
     attributes:
       label: Best for
-      description: Use cases (e.g. research, coding, RAG).
+      description: Use cases (e.g. multi-model routing, cost control).
     validations:
       required: true
   - type: input
     id: category
     attributes:
       label: Category
-      description: See docs/category-guide.md (e.g. Research, Coding, Productivity).
+      description: See docs/category-guide.md (e.g. Multi-agent, Automation).
     validations:
       required: true
   - type: dropdown
@@ -58,4 +58,4 @@ body:
     id: notes
     attributes:
       label: Notes
-      description: License, setup caveats, or Open WebUI version notes.
+      description: License, dependencies (e.g. LiteLLM), or Open WebUI version notes.

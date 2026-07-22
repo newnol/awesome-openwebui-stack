@@ -1,0 +1,61 @@
+name: Add integration
+description: Suggest an external service or connection pattern for the catalog
+title: "[Integration] "
+labels: ["catalog", "integration"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        List an **external service or connection pattern** others can adopt, with a short "how it fits Open WebUI" note and a stable **source** link. Entries land in `catalog/integrations.md`. See `docs/submission-guidelines.md`.
+  - type: input
+    id: name
+    attributes:
+      label: Integration name
+      description: Service or pattern name (e.g. Tavily web search, Qdrant vector store).
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: Service site, repository, or documentation link.
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: One or two sentences, including how it fits Open WebUI.
+    validations:
+      required: true
+  - type: textarea
+    id: best-for
+    attributes:
+      label: Best for
+      description: Use cases (e.g. web search grounding, RAG storage).
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: See docs/category-guide.md (e.g. RAG, Research, Self-hosting).
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - Stable
+        - Beta
+        - Experimental
+        - Unmaintained
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Pricing/free tier, auth, self-hosting notes, or version caveats.

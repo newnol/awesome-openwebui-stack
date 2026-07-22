@@ -5,6 +5,7 @@
 ## Maintainer: [openwebui-extension](https://github.com/newnol/openwebui-extension)
 
 ### Auto Router Model
+
 - **Purpose:** Route requests to models based on keyword rules (e.g., cost vs capability).
 - **Best for:** Multi-model setups, cost control, organization-wide defaults.
 - **Category:** Multi-agent, Automation

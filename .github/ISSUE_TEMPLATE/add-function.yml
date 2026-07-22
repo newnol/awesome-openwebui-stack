@@ -1,16 +1,16 @@
-name: Add tool
-description: Suggest a tool for the catalog
-title: "[Tool] "
-labels: ["catalog", "tool"]
+name: Add function
+description: Suggest a function (filter, action, etc.) for the catalog
+title: "[Function] "
+labels: ["catalog", "function"]
 body:
   - type: markdown
     attributes:
       value: |
-        List **finished**, installable tools with a stable **source** link. This catalog is a showcase—not a tutorial repo. See `docs/submission-guidelines.md`.
+        List **finished**, installable functions with a stable **source** link. This catalog is a showcase—not a tutorial repo. Entries land in `catalog/functions.md`. See `docs/submission-guidelines.md`.
   - type: input
     id: name
     attributes:
-      label: Tool name
+      label: Function name
       description: Official name as shown in docs or repo.
     validations:
       required: true
@@ -32,14 +32,14 @@ body:
     id: best-for
     attributes:
       label: Best for
-      description: Use cases (e.g. research, coding, RAG).
+      description: Use cases (e.g. moderation, formatting, guardrails).
     validations:
       required: true
   - type: input
     id: category
     attributes:
       label: Category
-      description: See docs/category-guide.md (e.g. Research, Coding, Productivity).
+      description: See docs/category-guide.md (e.g. Automation, Productivity).
     validations:
       required: true
   - type: dropdown

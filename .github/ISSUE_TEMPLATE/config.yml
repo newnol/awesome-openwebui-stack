@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contribution guidelines
+    url: https://github.com/newnol/awesome-openwebui-stack/blob/main/CONTRIBUTING.md
+    about: What belongs here and how to submit a finished listing.
+  - name: Submission format & filled-in example
+    url: https://github.com/newnol/awesome-openwebui-stack/blob/main/docs/submission-guidelines.md
+    about: Entry format, required fields, and a copy-paste example.
+  - name: Open WebUI documentation
+    url: https://docs.openwebui.com/
+    about: How to build tools, functions, and pipes (out of scope for this catalog).
