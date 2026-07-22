@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
+**English** · [Tiếng Việt](README.vi.md)
+
 A **community-facing showcase**: finished **stacks**, **tools**, **functions**, and **pipes** worth knowing about for [Open WebUI](https://github.com/open-webui/open-webui). Each listing should point to something **usable today** (repo, release, or official/community post)—this is **not** a tutorial repo for building new tools.
 
 1. **What’s worth trying?** Curated entries with clear purpose and a stable link.
