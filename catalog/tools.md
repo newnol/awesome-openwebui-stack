@@ -1,6 +1,6 @@
 # Tools
 
-Python tools you can register in Open WebUI (see [official tools docs](https://docs.openwebui.com/features/plugin/tools/)).
+Python tools you can register in Open WebUI (see [official tools docs](https://docs.openwebui.com/features/extensibility/plugin/tools/)).
 
 ## Maintainer: [openwebui-extension](https://github.com/newnol/openwebui-extension)
 
