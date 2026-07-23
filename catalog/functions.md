@@ -1,8 +1,8 @@
 # Functions
 
-Open WebUI **functions** include filters, actions, and other server-side hooks (see [functions documentation](https://docs.openwebui.com/features/plugin/functions/)).
+Open WebUI **functions** include filters, actions, and other server-side hooks (see [functions documentation](https://docs.openwebui.com/features/extensibility/plugin/functions/)).
 
-This file lists **finished** function packages (installable from their **Source** links). To **write** new functions, use [Open WebUI functions documentation](https://docs.openwebui.com/features/plugin/functions/)—not this repo.
+This file lists **finished** function packages (installable from their **Source** links). To **write** new functions, use [Open WebUI functions documentation](https://docs.openwebui.com/features/extensibility/plugin/functions/)—not this repo.
 
 ---
 
@@ -26,6 +26,7 @@ Submit filters, inlet/outlet scripts, and reusable function modules here as they
 ---
 
 ## SheetProof Router
+
 - **Type:** Function (filter)
 - **Purpose:** Companion filter for the SheetProof tool: on a spreadsheet upload it removes the file from retrieval, enables the tool with native function calling, injects a "numbers only from the tool" contract, and audits the final answer against the tool's results.
 - **Best for:** Preventing hallucinated figures in spreadsheet chats, keeping raw rows out of the model prompt.

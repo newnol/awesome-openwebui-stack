@@ -30,6 +30,19 @@ Use one of these patterns so the catalog stays scannable.
 - **Status:** Stable
 ```
 
+### Filled-in example (copy and edit)
+
+```markdown
+### YouTube Transcript
+- **Purpose:** Fetch transcripts from YouTube by URL or video ID.
+- **Best for:** Research, note-taking, quoting evidence from video content.
+- **Category:** Research, Productivity
+- **Stack fit:** [Open WebUI stack](../stacks/openwebui-stack/)
+- **Status:** Stable
+- **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
+- **Notes:** Typically requires `youtube-transcript-api`.
+```
+
 ## Required fields
 
 - **Purpose** and **Best for** (or equivalent).

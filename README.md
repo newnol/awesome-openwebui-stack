@@ -1,4 +1,11 @@
-# Awesome Open WebUI Tools
+# Awesome Open WebUI Stack
+
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Checks](https://github.com/newnol/awesome-openwebui-stack/actions/workflows/checks.yml/badge.svg)](https://github.com/newnol/awesome-openwebui-stack/actions/workflows/checks.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+**English** · [Tiếng Việt](README.vi.md)
 
 A **community-facing showcase**: finished **stacks**, **tools**, **functions**, and **pipes** worth knowing about for [Open WebUI](https://github.com/open-webui/open-webui). Each listing should point to something **usable today** (repo, release, or official/community post)—this is **not** a tutorial repo for building new tools.
 
@@ -7,6 +14,18 @@ A **community-facing showcase**: finished **stacks**, **tools**, **functions**, 
 3. **Where’s the implementation?** Outbound links only; source code lives in upstream repos.
 
 **Bar for inclusion:** the stack or tool/function/pipe is **complete enough to recommend** (or honestly labeled **Beta** / **Unmaintained** with context). For **how to author** tools, pipes, or filters, use **[Open WebUI documentation](https://docs.openwebui.com/)** and upstream source—not this repository.
+
+---
+
+## Contents
+
+- [Who this is for](#who-this-is-for)
+- [Selection criteria](#selection-criteria)
+- [Quick navigation](#quick-navigation)
+- [Featured stack](#featured-stack)
+- [Contributing](#contributing)
+- [Scope](#scope)
+- [License](#license)
 
 ---
 
@@ -67,6 +86,8 @@ Maintainer examples live in **[openwebui-extension](https://github.com/newnol/op
 ## Contributing
 
 Add **finished** listings only. See [CONTRIBUTING.md](CONTRIBUTING.md), [docs/submission-guidelines.md](docs/submission-guidelines.md), [docs/review-criteria.md](docs/review-criteria.md), [docs/category-guide.md](docs/category-guide.md), [docs/faq.md](docs/faq.md). Issues: [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/).
+
+By participating, you agree to our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ---
 

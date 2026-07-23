@@ -1,0 +1,8 @@
+# Local / in-container URLs that cannot be reached from CI.
+# One regex per line (lychee matches these against each link).
+localhost:3000
+localhost:4000
+localhost:18000
+litellm:4000
+# Third-party ZIP helper: rejects/redirects HEAD probes, not worth failing CI over.
+download-directory\.github\.io

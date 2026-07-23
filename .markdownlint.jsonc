@@ -1,0 +1,8 @@
+{
+  // Awesome-list markdown: relax the two rules that fight curation style.
+  "default": true,
+  "MD013": false, // line-length: entries and tables run long on purpose
+  "MD033": false, // inline HTML: badges and <details> blocks are allowed
+  "MD041": false, // first-line-heading: issue/PR templates start with a "## Section"
+  "MD060": false  // table-column-style: hand-aligned tables need not be pixel-perfect
+}

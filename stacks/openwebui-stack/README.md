@@ -17,46 +17,46 @@ Do everything **from this folder** (where `docker-compose.yml` lives). Get this 
 ### 0) Get this folder (`git clone`)
 
 ```bash
-git clone https://github.com/newnol/awesome-openwebui-tools.git
-cd awesome-openwebui-tools/stacks/openwebui-stack
+git clone https://github.com/newnol/awesome-openwebui-stack.git
+cd awesome-openwebui-stack/stacks/openwebui-stack
 ```
 
-The directory after `git clone` matches the repository name on GitHub (here: `awesome-openwebui-tools`). If you use a **fork** or GitHub shows a **renamed** default repo, `cd` into that clone directory, then into `stacks/openwebui-stack/`.
+The directory after `git clone` matches the repository name on GitHub (here: `awesome-openwebui-stack`). If you use a **fork** or GitHub shows a **renamed** default repo, `cd` into that clone directory, then into `stacks/openwebui-stack/`.
 
 Optional shallow clone (smaller download):
 
 ```bash
-git clone --depth 1 https://github.com/newnol/awesome-openwebui-tools.git
-cd awesome-openwebui-tools/stacks/openwebui-stack
+git clone --depth 1 https://github.com/newnol/awesome-openwebui-stack.git
+cd awesome-openwebui-stack/stacks/openwebui-stack
 ```
 
 #### Get only `stacks/openwebui-stack` (no full working tree)
 
 If you do **not** want every other file from the catalog checked out, use one of these:
 
-**A — Sparse clone (Git only downloads that path; history stays shallow)**
+##### A — Sparse clone (Git only downloads that path; history stays shallow)
 
 Requires **Git 2.25+**. Default branch is **`main`** (change if your fork uses another name).
 
 ```bash
-git clone --filter=blob:none --sparse https://github.com/newnol/awesome-openwebui-tools.git
-cd awesome-openwebui-tools
+git clone --filter=blob:none --sparse https://github.com/newnol/awesome-openwebui-stack.git
+cd awesome-openwebui-stack
 git sparse-checkout set stacks/openwebui-stack
 cd stacks/openwebui-stack
 ```
 
-**B — Export folder without Git (`svn`; no `.git`, good for “drop files on a server”)**
+##### B — Export folder without Git (`svn`; no `.git`, good for “drop files on a server”)
 
 Requires the **`svn`** CLI. GitHub exposes Subversion under `trunk` for the default branch:
 
 ```bash
-svn export https://github.com/newnol/awesome-openwebui-tools/trunk/stacks/openwebui-stack openwebui-stack
+svn export https://github.com/newnol/awesome-openwebui-stack/trunk/stacks/openwebui-stack openwebui-stack
 cd openwebui-stack
 ```
 
-**C — Download a ZIP of just this folder (browser / helper)**
+##### C — Download a ZIP of just this folder (browser / helper)
 
-Use [download-directory.github.io](https://download-directory.github.io/?url=https://github.com/newnol/awesome-openwebui-tools/tree/main/stacks/openwebui-stack) (third‑party; paste the URL if the branch is not `main`). Unzip, then `cd` into the extracted folder.
+Use [download-directory.github.io](https://download-directory.github.io/?url=https://github.com/newnol/awesome-openwebui-stack/tree/main/stacks/openwebui-stack) (third‑party; paste the URL if the branch is not `main`). Unzip, then `cd` into the extracted folder.
 
 ---
 

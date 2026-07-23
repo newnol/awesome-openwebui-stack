@@ -1,12 +1,13 @@
 # Tools
 
-Python tools you can register in Open WebUI (see [official tools docs](https://docs.openwebui.com/features/plugin/tools/)).
+Python tools you can register in Open WebUI (see [official tools docs](https://docs.openwebui.com/features/extensibility/plugin/tools/)).
 
 ## Maintainer: [openwebui-extension](https://github.com/newnol/openwebui-extension)
 
 Source code for the following lives in **[newnol/openwebui-extension](https://github.com/newnol/openwebui-extension)** (not in this catalog repository).
 
 ### YouTube Transcript
+
 - **Purpose:** Fetch transcripts from YouTube by URL or video ID.
 - **Best for:** Research, note-taking, quoted evidence from video content.
 - **Category:** Research, Productivity
@@ -16,6 +17,7 @@ Source code for the following lives in **[newnol/openwebui-extension](https://gi
 - **Notes:** Typically requires `youtube-transcript-api`.
 
 ### YouTube Info
+
 - **Purpose:** Extract title and description from YouTube pages (often Selenium-based).
 - **Best for:** Metadata for research workflows.
 - **Category:** Research
@@ -25,6 +27,7 @@ Source code for the following lives in **[newnol/openwebui-extension](https://gi
 - **Notes:** May require `selenium` and a suitable browser/driver setup.
 
 ### Diagram Generator
+
 - **Purpose:** Generate architecture diagrams from Python (e.g. `diagrams` library).
 - **Best for:** Visualizing systems, cloud diagrams from code.
 - **Category:** Coding, Productivity
@@ -34,6 +37,7 @@ Source code for the following lives in **[newnol/openwebui-extension](https://gi
 - **Notes:** Often requires Graphviz system packages.
 
 ### Auto Tool Filter
+
 - **Purpose:** Use an LLM to pick relevant tools from a larger toolset for a query.
 - **Best for:** Reducing noise when many tools are enabled.
 - **Category:** Multi-agent, Automation

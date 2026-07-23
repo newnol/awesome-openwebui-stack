@@ -1,10 +1,11 @@
 # Pipes
 
-**Pipes** route or transform model traffic (see [Open WebUI functions / pipes](https://docs.openwebui.com/features/plugin/functions/)).
+**Pipes** route or transform model traffic (see [Open WebUI functions / pipes](https://docs.openwebui.com/features/extensibility/plugin/functions/)).
 
 ## Maintainer: [openwebui-extension](https://github.com/newnol/openwebui-extension)
 
 ### Auto Router Model
+
 - **Purpose:** Route requests to models based on keyword rules (e.g., cost vs capability).
 - **Best for:** Multi-model setups, cost control, organization-wide defaults.
 - **Category:** Multi-agent, Automation
