@@ -26,6 +26,7 @@ Submit filters, inlet/outlet scripts, and reusable function modules here as they
 ---
 
 ## SheetProof Router
+
 - **Type:** Function (filter)
 - **Purpose:** Companion filter for the SheetProof tool: on a spreadsheet upload it removes the file from retrieval, enables the tool with native function calling, injects a "numbers only from the tool" contract, and audits the final answer against the tool's results.
 - **Best for:** Preventing hallucinated figures in spreadsheet chats, keeping raw rows out of the model prompt.
