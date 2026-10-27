@@ -1,69 +1,41 @@
 # Submission guidelines
 
-Listings here are **introductions to finished work**: a stack you run, or a tool/function/pipe others can install from your linked source. **Do not** submit tutorial-only content or stubs without a working artifact—use [Open WebUI docs](https://docs.openwebui.com/) for “how to build.”
+Submit finished tools, functions, pipes, integrations or reference stacks that readers can inspect and adopt. Tutorials on authoring new extensions belong in upstream repositories or the official Open WebUI documentation.
 
 ## Entry format
 
-Use one of these patterns so the catalog stays scannable.
+The canonical listing is an object in [`data/catalog.json`](../data/catalog.json), validated against [`data/catalog.schema.json`](../data/catalog.schema.json). Copy an existing object rather than copying a generated Markdown section.
 
-### Detailed block
+| Field | What to provide |
+| --- | --- |
+| `id`, `name` | Stable kebab-case identifier and unique human-readable name. |
+| `type` | `tool`, `function`, `pipe`, `stack` or `integration`. |
+| `categories` | One or more categories from the schema. |
+| `summary` | A brief, factual description of the user-facing outcome. |
+| `source`, `guide` | HTTPS URLs to the original source and usable setup instructions. |
+| `status` | `documented`, `example` or `unavailable`; see review criteria. |
+| `reviewed`, `evidence`, `review_note` | Actual source-inspection date, evidence URL and scope of the inspection. |
+| `compatibility` | Known versions and their evidence, or an explicit statement that no runtime test was performed. |
+| `requirements` | Non-empty list of prerequisites: services, permissions, model features or dependencies. |
+| `risk` | Permissions, code execution, egress, data handling or credential caveats. |
+| `license` | Verified upstream license/terms, or clearly state that the reader must check upstream. |
 
-```markdown
-## Name
-- **Type:** Tool | Function | Pipe | Integration | Stack
-- **Purpose:** One line.
-- **Best for:** Comma-separated use cases.
-- **Category:** See [category-guide.md](category-guide.md).
-- **Stack fit:** Which stack docs link here, if any.
-- **Status:** Stable | Beta | Experimental | Unmaintained
-- **Source:** [Repository or docs](https://example.com)
-- **Notes:** Optional caveats, license, or setup hints.
+Dates use `YYYY-MM-DD` and cannot be in the future. URLs must use HTTPS and contain no credentials. IDs and names must be unique; multiple components can legitimately share a source repository.
+
+## Evidence levels
+
+`documented` means an implementation or setup documentation was inspected. It is not a certification, runtime-test badge or maintenance guarantee. `example` is for reference infrastructure without deployment validation. `unavailable` is reserved for existing historical listings whose implementation cannot be found; it is not a way to submit new placeholders.
+
+## Generate and check
+
+```bash
+node scripts/catalog.mjs
+node --test tests/catalog.test.mjs
+node scripts/catalog.mjs --check
 ```
 
-### Compact line
+Commit metadata and generated pages together. For stack write-ups, also follow [stack format](stack-format.md). See the [maintenance guide](catalog-maintenance.md) for full schema and browser tests.
 
-```markdown
-### [Name](https://example.com)
-- **Purpose:** …
-- **Best for:** …
-- **Stack fit:** …
-- **Status:** Stable
-```
+## No-code submissions
 
-### Filled-in example (copy and edit)
-
-```markdown
-### YouTube Transcript
-- **Purpose:** Fetch transcripts from YouTube by URL or video ID.
-- **Best for:** Research, note-taking, quoting evidence from video content.
-- **Category:** Research, Productivity
-- **Stack fit:** [Open WebUI stack](../stacks/openwebui-stack/)
-- **Status:** Stable
-- **Source:** [openwebui-extension](https://github.com/newnol/openwebui-extension)
-- **Notes:** Typically requires `youtube-transcript-api`.
-```
-
-## Required fields
-
-- **Purpose** and **Best for** (or equivalent).
-- **Source** link unless the item is fully documented inside this repo (then use a relative path).
-- **Status** when you know maintenance reality; otherwise write **Unknown** and say why.
-
-## Quality bar
-
-- Prefer primary sources (author repo, official docs).
-- No affiliate-only links as the sole source.
-- If you duplicate an upstream README, add one sentence on why Open WebUI users should care.
-
-## Where entries live
-
-| Kind | Primary file |
-|------|----------------|
-| Tool | [catalog/tools.md](../catalog/tools.md) |
-| Function | [catalog/functions.md](../catalog/functions.md) |
-| Pipe | [catalog/pipes.md](../catalog/pipes.md) |
-| **Stack** (showcase README) | New folder **`stacks/<name>/`** with **`README.md`** including **Author (GitHub)** (copy [template-full-stack](../stacks/template-full-stack/README.md); optional `docker-compose.yml`) per [stack-format.md](stack-format.md) + row in [catalog/stacks.md](../catalog/stacks.md) |
-| Integration | [catalog/integrations.md](../catalog/integrations.md) |
-| Learning | [catalog/learning-resources.md](../catalog/learning-resources.md) |
-
-Also add cross-links from relevant [categories/](../categories/) pages when it helps readers who browse by goal.
+The [catalog issue form](https://github.com/newnol/awesome-openwebui-stack/issues/new?template=catalog-entry.yml) collects the same information without requiring a Git checkout. Maintainers review and convert submissions; opening an issue does not automatically publish an entry.

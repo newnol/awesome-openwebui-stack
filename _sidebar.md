@@ -1,9 +1,12 @@
 <!-- Docsify sidebar. Links are site-root-relative (leading slash). -->
 
-- [Home](/README.md)
-- [Start here: choose an add-on](/START-HERE.md)
+- [Catalog explorer](https://newnol.github.io/awesome-openwebui-stack/)
+- [Start here](/START-HERE.md)
+- [Vietnamese guide](/START-HERE.vi.md)
+- [About the directory](/README.md)
 
-- Catalog (by artifact)
+- Catalog
+  - [All entries](/catalog/README.md)
   - [Tools](/catalog/tools.md)
   - [Functions](/catalog/functions.md)
   - [Pipes](/catalog/pipes.md)
@@ -11,7 +14,7 @@
   - [Integrations](/catalog/integrations.md)
   - [Learning resources](/catalog/learning-resources.md)
 
-- Categories (by goal)
+- Use cases
   - [Coding](/categories/coding.md)
   - [Research](/categories/research.md)
   - [RAG](/categories/rag.md)
@@ -21,16 +24,14 @@
   - [Self-hosting](/categories/self-hosting.md)
   - [Security](/categories/security.md)
 
-- Stacks
-  - [Stacks index](/stacks/README.md)
-  - [Open WebUI stack](/stacks/openwebui-stack/README.md)
+- Reference stacks
+  - [Open WebUI example](/stacks/openwebui-stack/README.md)
   - [Stack template](/stacks/template-full-stack/README.md)
 
-- Contributing
+- Community
   - [Contributing](/CONTRIBUTING.md)
   - [Submission guidelines](/docs/submission-guidelines.md)
   - [Review criteria](/docs/review-criteria.md)
-  - [Category guide](/docs/category-guide.md)
-  - [Stack format](/docs/stack-format.md)
+  - [Maintenance and testing](/docs/catalog-maintenance.md)
   - [FAQ](/docs/faq.md)
   - [Code of Conduct](/CODE_OF_CONDUCT.md)

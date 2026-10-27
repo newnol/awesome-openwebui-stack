@@ -1,46 +1,50 @@
-# Start here: find the right Open WebUI add-on
+# Start here
 
-New to Open WebUI? This page helps you choose a **working project** before reading implementation details. This repository is a curated directory, **not** an app store or a bundled installation.
+**[Browse the explorer](https://newnol.github.io/awesome-openwebui-stack/)** | **[Markdown catalog](catalog/README.md)** | **[Hướng dẫn tiếng Việt](START-HERE.vi.md)**
 
-## Choose by what you want to do
+You do not need to clone this repository to discover an add-on. Choose a goal, inspect requirements and evidence, then follow the linked project's instructions. This is a directory, not an installer.
 
-| I want to... | Start with | Type | Before you try it |
-|---|---|---|---|
-| Summarize YouTube videos | [YouTube Transcript](catalog/tools.md#youtube-transcript) | Tool | Check upstream dependencies and transcript availability. |
-| Extract YouTube metadata | [YouTube Info](catalog/tools.md#youtube-info) | Tool | May require a browser and Selenium. |
-| Draw architecture diagrams | [Diagram Generator](catalog/tools.md#diagram-generator) | Tool | Graphviz may be required on the server. |
-| Reduce manual tool selection | [Auto Tool Filter](catalog/tools.md#auto-tool-filter) | Tool/filter | Review model calls, permissions, and cost. |
-| Analyze CSV / Excel without invented numbers | [SheetProof](catalog/tools.md#community-and-upstream-additions-welcome) + [SheetProof Router](catalog/functions.md#sheetproof-router) | Tool + function | Read the upstream setup and data-handling notes. |
-| Route requests between models | [Auto Router Model](catalog/pipes.md#auto-router-model) | Pipe | Check supported providers and current configuration upstream. |
-| Deploy an example environment | [Open WebUI stack](stacks/openwebui-stack/README.md) | Stack | Review secrets, exposed ports, and resource requirements first. |
+## Choose your goal
 
-These links lead to descriptions or project documentation. An entry being listed **does not** mean it is audited, officially endorsed, or compatible with every Open WebUI version.
+| I want to... | Read first |
+| --- | --- |
+| Analyze a spreadsheet | [SheetProof](catalog/tools.md#sheetproof) and its optional [Router](catalog/functions.md#sheetproof-router) |
+| Connect a local model | [Ollama](catalog/integrations.md#ollama) |
+| Connect several model providers | [LiteLLM](catalog/integrations.md#litellm) |
+| Add web search | [SearXNG](catalog/integrations.md#searxng) |
+| Let a model run commands | [Open Terminal](catalog/integrations.md#open-terminal); review its security boundary first |
+| See services used together | [Open WebUI reference stack](stacks/openwebui-stack/README.md); an example, not a production distribution |
 
-## Understand the difference
+## Use the explorer
 
-| Type | What it changes | Read more |
-|---|---|---|
-| **Tool** | Adds a callable capability, such as fetching a transcript. | [Tools](catalog/tools.md) |
-| **Function** | Adds server-side logic, such as an action or filter. | [Functions](catalog/functions.md) |
-| **Pipe** | Exposes a custom model-like endpoint or routing pipeline. | [Pipes](catalog/pipes.md) |
-| **Integration** | Connects an external service to an Open WebUI workflow. | [Integrations](catalog/integrations.md) |
-| **Stack** | Describes multiple services used together. | [Stacks](catalog/stacks.md) |
+Search in your own words, or choose a goal shortcut. Combine **artifact type**, **use case** and **evidence** filters. Select up to three **Compare** checkboxes to inspect requirements and risks side by side. **Copy view link** preserves filters and the comparison for someone else; browser Back restores filter changes. Press `/` to focus search.
 
-## Four steps to try an entry
+No result? Clear a filter. Historical entries with missing implementations are excluded by default. Enable **Include unavailable implementations** only to inspect those records, not to install them.
 
-1. **Choose a use case** above or browse [categories](#browse-more).
-2. **Open the source link** in its catalog entry. Verify the project's license, maintenance status, compatibility and installation instructions. The code generally lives **outside** this repository.
-3. **Test safely:** start in a non-production Open WebUI instance; use restricted API keys and review permissions, network access and data sent to third parties. Be especially careful with code-execution and browser-automation add-ons.
-4. **Record the result:** note the Open WebUI version, extension version, required configuration and any limitations. Share corrections through an [issue](https://github.com/newnol/awesome-openwebui-stack/issues) or [pull request](https://github.com/newnol/awesome-openwebui-stack/pulls).
+## Understand the artifact types
 
-## Browse more
+| Type | Meaning |
+| --- | --- |
+| Tool | A capability the model can call, such as analyzing an uploaded spreadsheet. |
+| Function | Server-side behavior, such as a filter or action. |
+| Pipe | A custom model-like endpoint or routing pipeline; an Open WebUI function subtype, listed separately for discovery. |
+| Integration | An external service connected through settings, an API or a tool. |
+| Stack | Several services documented as one setup. |
 
-**By goal:** [Coding](categories/coding.md) · [Research](categories/research.md) · [RAG](categories/rag.md) · [Automation](categories/automation.md) · [Productivity](categories/productivity.md) · [Multi-agent](categories/multi-agent.md) · [Self-hosting](categories/self-hosting.md) · [Security](categories/security.md)
+## Check evidence before installing
 
-**By artifact:** [Tools](catalog/tools.md) · [Functions](catalog/functions.md) · [Pipes](catalog/pipes.md) · [Stacks](catalog/stacks.md) · [Integrations](catalog/integrations.md)
+**Source documented:** source or setup documentation was inspected. This does not prove compatibility, security or end-to-end functionality.
 
-## Want to contribute?
+**Example / not runtime-tested:** a reference setup exists, but this directory has not validated a deployment.
 
-Found a working add-on that is missing? Check [submission guidelines](docs/submission-guidelines.md) and [review criteria](docs/review-criteria.md). Include a stable source URL, purpose, category, compatibility details when known, and honest maintenance status. You do **not** need to submit the tool's entire source tree here.
+**Implementation unavailable:** the linked source does not currently provide the advertised implementation. Preserved for transparency, not recommended.
 
-**Need installation help?** Follow the linked project's instructions and the [official Open WebUI documentation](https://docs.openwebui.com/). This directory cannot guarantee installation steps for third-party projects.
+A source-review date is not a release date or runtime-test date. See [review criteria](docs/review-criteria.md).
+
+## Try safely, one change at a time
+
+1. Read the upstream license, installation guide and compatibility notes. Note your Open WebUI and extension versions.
+2. Use a non-production instance with non-sensitive test data and restricted credentials. Review code and permissions, especially for server-side Python, browsers or shell execution.
+3. Install using the upstream instructions, run its sample scenario, and record expected versus actual results. Remove the add-on and revoke test credentials when finished.
+
+The [official plugin documentation](https://docs.openwebui.com/features/extensibility/plugin/) explains extension concepts. Report outdated listings through [contributing](CONTRIBUTING.md); report implementation defects to the upstream project.

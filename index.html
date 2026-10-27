@@ -1,33 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Awesome Open WebUI Stack</title>
-    <meta name="description" content="A curated showcase of finished Open WebUI stacks, tools, functions, and pipes." />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
-  </head>
-  <body>
-    <div id="app">Loading…</div>
-    <script>
-      window.$docsify = {
-        name: "Awesome Open WebUI Stack",
-        repo: "https://github.com/newnol/awesome-openwebui-stack",
-        homepage: "README.md",
-        loadSidebar: true,
-        subMaxLevel: 2,
-        auto2top: true,
-        relativePath: false,
-        search: {
-          placeholder: "Search",
-          noData: "No results.",
-          depth: 3,
-        },
-      };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find Open WebUI tools, integrations and stacks by goal. Compare requirements, inspect source evidence, and follow upstream setup guides.">
+  <meta name="color-scheme" content="light dark">
+  <title>Awesome Open WebUI Stack - Find your next upgrade</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <script>if (location.hash.startsWith('#/')) location.replace('guide.html' + location.hash);</script>
+  <script type="module" src="assets/app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#catalog">Skip to catalog</a>
+  <header class="topbar"><div class="wrap">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">W</span><span>Awesome Open WebUI<small>THE COMMUNITY STACK DIRECTORY</small></span></a>
+    <nav aria-label="Main navigation"><a href="guide.html#/START-HERE">Start here</a><a href="guide.html#/CONTRIBUTING">Contribute</a><a href="https://github.com/newnol/awesome-openwebui-stack">GitHub</a><button class="quiet" id="theme" type="button" aria-pressed="false">Dark mode</button></nav>
+  </div></header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="headline"><div>
+      <span class="eyebrow">Less searching. More building.</span>
+      <h1 id="headline">Find your next<br>Open WebUI upgrade.</h1>
+      <p class="lead">Tools, integrations and real-world stacks. Discover what fits your workflow, what it needs, and what has actually been checked.</p>
+      <div class="presets" aria-label="Browse by goal"><button type="button" data-preset='{"q":"sheetproof"}'>Analyze spreadsheets</button><button type="button" data-preset='{"q":"ollama"}'>Use local models</button><button type="button" data-preset='{"category":"research"}'>Research the web</button><button type="button" data-preset='{"q":"terminal"}'>Run code</button></div>
+    </div><aside class="intro-card"><span class="eyebrow">New around here?</span><h2>A directory, not an app store.</h2><p>Choose a goal, compare options, then follow the original project's setup guide. Nothing is installed automatically.</p><a href="guide.html#/START-HERE">Find your starting point &rarr;</a><br><a href="guide.html#/START-HERE.vi" lang="vi">H&#432;&#7899;ng d&#7851;n ti&#7871;ng Vi&#7879;t &rarr;</a></aside></section>
+    <section class="browser" id="catalog" aria-labelledby="catalog-title">
+      <div class="section-head"><h2 id="catalog-title">Explore the catalog</h2><p id="catalog-stats">A source-first, community-curated collection</p></div>
+      <form id="filters" class="filter-panel" role="search" aria-label="Filter catalog">
+        <label class="search-label" for="q">What would you like to do?</label><input class="search" type="search" id="q" name="q" maxlength="200" placeholder="Search tools, tasks or requirements... (press /)" autocomplete="off">
+        <div class="filter-grid"><label for="type">Artifact type<select id="type" name="type"><option value="">All types</option></select></label><label for="category">Use case<select id="category" name="category"><option value="">All use cases</option></select></label><label for="status">Evidence<select id="status" name="status"><option value="">All evidence levels</option></select></label><label for="sort">Sort by<select id="sort" name="sort"><option value="name">Name A-Z</option><option value="reviewed">Source review date</option></select></label></div>
+        <div class="filter-bottom"><label class="checkbox" for="unavailable"><input type="checkbox" id="unavailable">Include unavailable implementations</label><div><button type="button" class="text-button" id="reset">Reset filters</button><button type="button" class="text-button" id="share">Copy view link</button></div></div>
+      </form>
+      <div class="results-bar"><span id="result-count" role="status" aria-live="polite">Loading entries...</span><div class="compare-actions"><button type="button" class="text-button" id="clear-compare" disabled>Clear comparison</button><button type="button" class="primary" id="compare-button" disabled>Compare (0/3)</button></div></div>
+      <p class="notice" id="notice" role="status" aria-live="polite"></p><p id="loading">Loading the catalog...</p>
+      <div class="error" id="load-error" role="alert" hidden><h3>The catalog could not be loaded.</h3><p>Reload this page, or browse the <a href="https://github.com/newnol/awesome-openwebui-stack/blob/main/catalog/README.md">Markdown catalog on GitHub</a>. Local preview requires an HTTP server, not a file:// URL.</p></div>
+      <noscript><div class="noscript">Search and comparison need JavaScript. All entries are also available in the <a href="https://github.com/newnol/awesome-openwebui-stack/blob/main/catalog/README.md">Markdown catalog</a>.</div></noscript>
+      <div id="results" class="grid"></div>
+      <div id="empty" class="empty" hidden><h3>No entries match these filters.</h3><p>Try fewer keywords or include unavailable implementations.</p><button class="quiet" type="button" id="empty-reset">Clear filters</button></div>
+    </section>
+    <section class="safety"><h2>Useful evidence.<br>Not a safety guarantee.</h2><p><strong>Source documented</strong> means source or setup documentation was inspected, not that the extension was runtime-tested or security-audited. Check compatibility, permissions, licenses and data handling before installing. <a href="guide.html#/docs/review-criteria">How we review entries &rarr;</a></p></section>
+  </main>
+  <footer><div class="wrap"><span>Community maintained. Not affiliated with Open WebUI.</span><span><a href="guide.html#/CONTRIBUTING">Suggest an entry</a> &middot; <a href="https://github.com/newnol/awesome-openwebui-stack/issues/new?template=broken-link.yml">Report an issue</a> &middot; <a href="data/catalog.json">Catalog JSON</a></span></div></footer>
+  <template id="entry-template"><article class="card"><div class="card-top"><span class="kind"></span><label class="checkbox compare-label"><input type="checkbox">Compare</label></div><h3></h3><p class="summary"></p><p class="tags"></p><span class="evidence"></span><details><summary>Requirements &amp; safety</summary><dl><dt>Requirements</dt><dd class="requirements"></dd><dt>Compatibility</dt><dd class="compatibility"></dd><dt>Safety notes</dt><dd class="risk"></dd><dt>License</dt><dd class="license"></dd></dl><p class="review"></p><a class="evidence-link">Review evidence &nearr;</a></details><div class="card-links"><a class="guide">Setup / documentation &nearr;</a><a class="source">Source &nearr;</a></div></article></template>
+  <dialog id="compare-dialog" aria-labelledby="compare-title"><div class="dialog-head"><h2 id="compare-title">Compare your shortlist</h2><form method="dialog"><button class="quiet">Close</button></form></div><div class="table-scroll"><table id="comparison"></table></div></dialog>
+</body>
 </html>
