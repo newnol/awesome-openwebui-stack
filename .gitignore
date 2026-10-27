@@ -119,3 +119,8 @@ package-lock.json
 
 # Stack deploy secrets (commit .env.example only)
 stacks/**/.env
+
+# Local catalog development and browser artifacts
+test-results/
+.venv/
+venv/

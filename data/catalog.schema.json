@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://newnol.github.io/awesome-openwebui-stack/data/catalog.schema.json",
+  "title": "Open WebUI catalog",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "name", "type", "categories", "summary", "source", "guide", "status", "reviewed", "evidence", "review_note", "compatibility", "requirements", "risk", "license"],
+    "properties": {
+      "id": {"type": "string", "minLength": 1, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+      "name": {"type": "string", "minLength": 1},
+      "type": {"type": "string", "minLength": 1, "enum": ["tool", "function", "pipe", "stack", "integration"]},
+      "categories": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["coding", "research", "rag", "automation", "productivity", "multi-agent", "self-hosting", "security"]}},
+      "summary": {"type": "string", "minLength": 1},
+      "source": {"type": "string", "minLength": 1, "format": "uri", "pattern": "^https://"},
+      "guide": {"type": "string", "minLength": 1, "format": "uri", "pattern": "^https://"},
+      "status": {"type": "string", "minLength": 1, "enum": ["documented", "example", "unavailable"]},
+      "reviewed": {"type": "string", "minLength": 1, "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+      "evidence": {"type": "string", "minLength": 1, "format": "uri", "pattern": "^https://"},
+      "review_note": {"type": "string", "minLength": 1},
+      "compatibility": {"type": "string", "minLength": 1},
+      "requirements": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+      "risk": {"type": "string", "minLength": 1},
+      "license": {"type": "string", "minLength": 1}
+    }
+  }
+}

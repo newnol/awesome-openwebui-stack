@@ -3,104 +3,63 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Checks](https://github.com/newnol/awesome-openwebui-stack/actions/workflows/checks.yml/badge.svg)](https://github.com/newnol/awesome-openwebui-stack/actions/workflows/checks.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**English** · [Tiếng Việt](README.vi.md)
+**English** | [Tiếng Việt](README.vi.md)
 
-A **community-facing showcase**: finished **stacks**, **tools**, **functions**, and **pipes** worth knowing about for [Open WebUI](https://github.com/open-webui/open-webui). Each listing should point to something **usable today** (repo, release, or official/community post)—this is **not** a tutorial repo for building new tools.
+Find Open WebUI tools, functions, pipes, integrations and reference stacks **by what you want to do**. Compare prerequisites, inspect the evidence, and follow the original project's setup instructions.
 
-1. **What’s worth trying?** Curated entries with clear purpose and a stable link.
-2. **What’s it for?** Browse by **categories** (goal) or **catalog** (artifact type).
-3. **Where’s the implementation?** Outbound links only; source code lives in upstream repos.
+**[Open the catalog explorer](https://newnol.github.io/awesome-openwebui-stack/)** | **[Start here](START-HERE.md)** | **[Browse on GitHub](catalog/README.md)** | **[Suggest an entry](CONTRIBUTING.md)**
 
-**Bar for inclusion:** the stack or tool/function/pipe is **complete enough to recommend** (or honestly labeled **Beta** / **Unmaintained** with context). For **how to author** tools, pipes, or filters, use **[Open WebUI documentation](https://docs.openwebui.com/)** and upstream source—not this repository.
+## Find your starting point
 
----
+| Your goal | Start with | What to check |
+| --- | --- | --- |
+| Analyze CSV or Excel | [SheetProof](catalog/tools.md#sheetproof) + [Router](catalog/functions.md#sheetproof-router) | Tool-calling model, Python dependencies, file privacy |
+| Use local models | [Ollama](catalog/integrations.md#ollama) | Model resources and server connectivity |
+| Connect model providers | [LiteLLM](catalog/integrations.md#litellm) | Provider keys, proxy permissions, data handling |
+| Search the web | [SearXNG](catalog/integrations.md#searxng) | JSON output and access to upstream search engines |
+| Run code and work with files | [Open Terminal](catalog/integrations.md#open-terminal) | Isolation, API key, filesystem and network permissions |
+| Explore a multi-service setup | [Reference stack](stacks/openwebui-stack/README.md) | Example only; review secrets and exposed ports |
 
-## Contents
+## Explore without guesswork
 
-- [Who this is for](#who-this-is-for)
-- [Selection criteria](#selection-criteria)
-- [Quick navigation](#quick-navigation)
-- [Featured stack](#featured-stack)
-- [Contributing](#contributing)
-- [Scope](#scope)
-- [License](#license)
+The website provides text search, filters for use case/type/evidence, a three-entry comparison, shareable filter URLs, mobile layouts and a light/dark theme. There is no sign-in, installation service, analytics tracker or API token requirement for browsing. The explorer loads only local static assets; the separate Docsify guide viewer retains its existing CDN dependencies.
 
----
+Every listing states its requirements, compatibility limitations, safety notes, source-review date and evidence link. **Source documented is not the same as tested, audited, maintained or endorsed.** Five legacy listings currently have no implementation at their linked source and are hidden from the explorer by default, but retained with explicit warnings in Markdown.
 
-## Who this is for
+## Browse the collection
 
-- People picking proven patterns (stacks) or add-ons for Open WebUI.
-- Authors who want to **promote** something already shipped.
-- Readers comparing options—not step-by-step “create your first tool” guides.
+| By artifact | By goal |
+| --- | --- |
+| [Tools](catalog/tools.md) | [Coding](categories/coding.md), [Research](categories/research.md) |
+| [Functions](catalog/functions.md) | [Productivity](categories/productivity.md), [Security](categories/security.md) |
+| [Pipes](catalog/pipes.md) | [Automation](categories/automation.md), [Multi-agent](categories/multi-agent.md) |
+| [Stacks](catalog/stacks.md) | [Self-hosting](categories/self-hosting.md) |
+| [Integrations](catalog/integrations.md) | [RAG](categories/rag.md) |
+| [Learning resources](catalog/learning-resources.md) | [All entries](catalog/README.md) |
 
----
+## Contribute once, publish everywhere
 
-## Selection criteria
+Listing data lives in [`data/catalog.json`](data/catalog.json). A [JSON Schema](data/catalog.schema.json) and automated checks protect the format. The explorer reads this data directly; a generator produces the artifact catalogs and category pages.
 
-Prefer **public source**, **clear license**, and **accurate status**. See [docs/review-criteria.md](docs/review-criteria.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+```bash
+node scripts/catalog.mjs
+node --test tests/catalog.test.mjs
+node scripts/catalog.mjs --check
+```
 
----
+No Node package installation is required for these commands (Node 22+). See [contributing](CONTRIBUTING.md), [submission guidelines](docs/submission-guidelines.md), [review criteria](docs/review-criteria.md), and the [maintenance guide](docs/catalog-maintenance.md).
 
-## Quick navigation
+## Preview locally
 
-| Browse by | Description |
-|-----------|-------------|
-| [catalog/tools.md](catalog/tools.md) | Python tools (callable from the UI) |
-| [catalog/functions.md](catalog/functions.md) | Functions (filters, actions, etc.) |
-| [catalog/pipes.md](catalog/pipes.md) | Pipes (model routing, custom pipelines) |
-| [catalog/stacks.md](catalog/stacks.md) | Reference stacks + template |
-| [catalog/integrations.md](catalog/integrations.md) | External services and connection patterns |
-| [catalog/learning-resources.md](catalog/learning-resources.md) | Official docs and external learning links |
+```bash
+python3 -m http.server 8000
+```
 
-**By goal:**
+Open `http://localhost:8000` for the explorer and `http://localhost:8000/guide.html` for the guides. Do not open `index.html` with `file://`; loading catalog JSON requires an HTTP server. Existing `/#/catalog/...` bookmarks redirect to the guide viewer.
 
-| Category | File |
-|----------|------|
-| Coding | [categories/coding.md](categories/coding.md) |
-| Research | [categories/research.md](categories/research.md) |
-| RAG | [categories/rag.md](categories/rag.md) |
-| Automation | [categories/automation.md](categories/automation.md) |
-| Productivity | [categories/productivity.md](categories/productivity.md) |
-| Multi-agent | [categories/multi-agent.md](categories/multi-agent.md) |
-| Self-hosting | [categories/self-hosting.md](categories/self-hosting.md) |
-| Security | [categories/security.md](categories/security.md) |
+## Scope and license
 
-**Stacks:** [stacks/openwebui-stack/](stacks/openwebui-stack/) — index [stacks/README.md](stacks/README.md).
+This is a curated community directory, not an app store, security certification or tutorial for writing extensions. Source code belongs in upstream repositories; small reference Compose examples can live beside stack write-ups. Follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
----
-
-## Featured stack
-
-- **[Open WebUI stack](stacks/openwebui-stack/)** — Example compose-oriented layout (LiteLLM, search, RAG outline). Each stack README includes an **author GitHub** link.
-
----
-
-## Implementations we link to
-
-Maintainer examples live in **[openwebui-extension](https://github.com/newnol/openwebui-extension)** — listed in [catalog/tools.md](catalog/tools.md) and [catalog/pipes.md](catalog/pipes.md).
-
----
-
-## Contributing
-
-Add **finished** listings only. See [CONTRIBUTING.md](CONTRIBUTING.md), [docs/submission-guidelines.md](docs/submission-guidelines.md), [docs/review-criteria.md](docs/review-criteria.md), [docs/category-guide.md](docs/category-guide.md), [docs/faq.md](docs/faq.md). Issues: [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/).
-
-By participating, you agree to our [Code of Conduct](CODE_OF_CONDUCT.md).
-
----
-
-## Scope
-
-| This repo | Elsewhere |
-|-----------|-----------|
-| Short blurbs + links to **shipped** work | How-to author extensions → **[docs.openwebui.com](https://docs.openwebui.com/)** |
-| Optional small `docker-compose` next to a stack README | Large production-only infra repos |
-| Curation & discovery | Full tool source trees (own GitHub repo) |
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+The directory is MIT licensed; each linked project, model and hosted service has its own license or terms. This project is not affiliated with Open WebUI.

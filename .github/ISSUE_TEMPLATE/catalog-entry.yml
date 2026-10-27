@@ -1,0 +1,75 @@
+name: Suggest a catalog entry
+description: Share a working Open WebUI add-on, integration or stack. No code editing required.
+title: "[Catalog]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Please link to working source and setup instructions. Do not include credentials or private data. A submission is not automatically published."
+  - type: input
+    id: name
+    attributes:
+      label: Project name
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Artifact type
+      options:
+        - Tool
+        - Function
+        - Pipe
+        - Integration
+        - Stack
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Original source URL
+      placeholder: https://github.com/owner/project
+    validations:
+      required: true
+  - type: input
+    id: guide
+    attributes:
+      label: Setup documentation URL
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: User goal and Open WebUI connection
+      description: What does it do, who benefits, and how does it connect to Open WebUI?
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements and compatibility
+      description: Services, keys, model features, dependencies and version limits. State unknowns.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and testing scope
+      description: What did you inspect or run, when, and with which versions? Include reproducible links. Source inspection alone is welcome; do not claim runtime testing without evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: License and safety notes
+      description: Link the license. Mention code execution, file access, external data transfer and required privileges.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked for an existing listing and linked real source or usable integration documentation.
+          required: true
+        - label: I did not include secrets and have separated upstream claims from my own testing.
+          required: true
