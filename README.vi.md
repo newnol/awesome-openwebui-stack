@@ -1,5 +1,8 @@
 # Awesome Open WebUI Stack
 
+> **Mới bắt đầu?** Xem **[hướng dẫn chọn tiện ích](START-HERE.md)** (tiếng Anh) để tìm theo nhu cầu, hiểu các loại extension và kiểm tra trước khi cài đặt.
+
+
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Checks](https://github.com/newnol/awesome-openwebui-stack/actions/workflows/checks.yml/badge.svg)](https://github.com/newnol/awesome-openwebui-stack/actions/workflows/checks.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
