@@ -7,6 +7,9 @@
 
 **English** · [Tiếng Việt](README.vi.md)
 
+> **New here?** Start with the **[quick discovery guide](START-HERE.md)** to find an add-on by goal, understand tools vs functions vs pipes, and check safety before installing.
+
+
 A **community-facing showcase**: finished **stacks**, **tools**, **functions**, and **pipes** worth knowing about for [Open WebUI](https://github.com/open-webui/open-webui). Each listing should point to something **usable today** (repo, release, or official/community post)—this is **not** a tutorial repo for building new tools.
 
 1. **What’s worth trying?** Curated entries with clear purpose and a stable link.
