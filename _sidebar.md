@@ -1,6 +1,7 @@
 <!-- Docsify sidebar. Links are site-root-relative (leading slash). -->
 
 - [Home](/README.md)
+- [Start here: choose an add-on](/START-HERE.md)
 
 - Catalog (by artifact)
   - [Tools](/catalog/tools.md)
