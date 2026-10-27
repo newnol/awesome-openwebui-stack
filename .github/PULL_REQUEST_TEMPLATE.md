@@ -1,19 +1,21 @@
 ## Summary
 
-Describe what this PR adds or fixes (one sentence). This repo is a **showcase** of **finished** stacks/tools/functions/pipes—link to shippable work, not in-repo tutorials.
+Describe the reader-facing outcome and link to original source or setup documentation.
 
 ## Checklist
 
-- [ ] Follows the entry format in `docs/submission-guidelines.md` (finished listing + stable link)
-- [ ] Catalog entries include the required fields: **Purpose**, **Best for**, **Category**, **Status**, **Source**
-- [ ] English text for catalog-facing content (`README.md`, `catalog/`, `categories/`, `stacks/`, `docs/` as applicable)
-- [ ] Links verified or marked as uncertain in the PR description
-- [ ] No secrets, API keys, or production-only deploy artifacts added as the main contribution
+- [ ] Listing changes are made in `data/catalog.json` and meet `data/catalog.schema.json`.
+- [ ] Ran `node scripts/catalog.mjs` and committed generated pages, when metadata changed.
+- [ ] Ran `node --test tests/catalog.test.mjs` and `node scripts/catalog.mjs --check`.
+- [ ] Requirements, compatibility limits, safety notes, license and source-review evidence are accurate.
+- [ ] Upstream claims are clearly separated from independent runtime tests.
+- [ ] English metadata; translated user guides are welcome.
+- [ ] No secrets, private data or large implementation codebases added.
+
+## Evidence and testing
+
+State what was inspected or run, exact versions when tested, observed results and known limitations. A source review is not a security audit.
 
 ## Related issue
 
-Closes #(issue)
-
-## Notes for reviewers
-
-Optional context (maintenance status, licensing, or scope).
+Link an issue, or state that none exists.

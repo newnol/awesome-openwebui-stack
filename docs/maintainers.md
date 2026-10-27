@@ -1,51 +1,26 @@
-# Maintainer checklist: GitHub repository settings
+# Maintainer checklist: repository settings
 
-These are one-time GitHub settings (not files in the repo) that make the project
-easier to discover and nicer to share on Discord, Slack, or X. Do these once in
-the repository's **Settings** and **About** panel.
+These are optional, one-time settings managed by a repository administrator. Changing catalog files does not change GitHub administration settings.
 
-## About panel (top-right of the repo home)
+## About panel
 
-- **Description** — keep it short. Suggested:
-  > A curated showcase of finished Open WebUI stacks, tools, functions, and pipes.
-- **Website** — leave blank for now (GitHub Pages is planned later).
-- **Topics** — add these so the repo shows up in GitHub topic searches:
-  - `open-webui`
-  - `awesome`
-  - `awesome-list`
-  - `llm`
-  - `self-hosted`
-  - `rag`
-  - `docker-compose`
+Suggested description: A community directory of Open WebUI tools, functions, pipes, integrations and reference stacks.
 
-## Social preview image (link previews on chat apps)
+After verifying that Pages is published, set Website to `https://newnol.github.io/awesome-openwebui-stack/`. Useful topics include `open-webui`, `awesome`, `awesome-list`, `llm`, `self-hosted`, `rag` and `docker-compose`.
 
-Settings → **General** → **Social preview** → **Edit** → upload an image.
+## Website
 
-- Recommended size: **1280×640** px (2:1). PNG or JPG, under 1 MB.
-- Keep the repo name and one-line description readable at small sizes.
-- Without this, shared links fall back to a plain GitHub avatar card.
+`index.html` is the static catalog explorer. `guide.html` provides the Docsify guide viewer; old `/#/...` routes redirect there. Both work from the repository root without a framework build. Keep `.nojekyll` committed.
 
-## Website (GitHub Pages + Docsify)
+For branch-based publishing, select Settings > Pages > Deploy from a branch, branch `main`, folder `/ (root)`. Do not switch an already working deployment source unnecessarily. Check the deployment result before advertising the public URL.
 
-The site is [Docsify](https://docsify.js.org/): it renders the existing markdown at
-runtime, so there is **no build step**. The files live at the repo root
-(`index.html`, `.nojekyll`, `_sidebar.md`).
+Listing changes belong in `data/catalog.json`. Run `node scripts/catalog.mjs` and commit the generated Markdown pages. Do not edit generated artifact/category indexes by hand. Preview using `python3 -m http.server 8000`.
 
-To publish:
-
-- Settings → **Pages** → **Build and deployment** → Source: **Deploy from a branch**.
-- Branch: **`main`**, folder: **`/ (root)`** → **Save**.
-- Wait a minute, then open `https://newnol.github.io/awesome-openwebui-stack/`.
-
-Notes:
-
-- `.nojekyll` is required so GitHub Pages serves files as-is (no Jekyll processing).
-- Editing any `.md` file updates the site on the next push. No extra workflow needed.
-- To preview locally: `npx docsify-cli serve .` (optional; needs Node).
+See [catalog maintenance](catalog-maintenance.md) for the architecture, tests, deployment artifacts and rollback procedure.
 
 ## Quick verification
 
-- Open the repo home in a private window: the description and topics render.
-- Paste the repo URL into a chat app: the social preview card shows your image.
-- Open the Pages URL: the sidebar loads and catalog/category links resolve.
+- Open the homepage, search, filter and compare entries on desktop and mobile.
+- Open the Start here guide, Vietnamese guide and an old catalog bookmark.
+- Confirm the About website URL matches the deployed site and the GitHub Actions checks passed.
+- Verify any social-preview image in a real link preview before promoting it.

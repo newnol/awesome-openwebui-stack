@@ -14,19 +14,19 @@ test('schema and runtime enums stay aligned', () => {
   assert.deepEqual([...schema.items.required].sort(), Object.keys(entries[0]).sort());
 });
 test('default browse excludes unavailable implementations', () => {
-  assert.equal(selectEntries(entries, state()).length, 7);
+  assert.equal(selectEntries(entries, state()).length, entries.filter(e => e.status !== 'unavailable').length);
   assert.ok(selectEntries(entries, state()).every(e => e.status !== 'unavailable'));
 });
 test('historical listings require an explicit opt-in', () => {
-  assert.equal(selectEntries(entries, state({ unavailable: true })).length, 12);
-  assert.equal(selectEntries(entries, state({ status: 'unavailable' })).length, 5);
+  assert.equal(selectEntries(entries, state({ unavailable: true })).length, entries.length);
+  assert.equal(selectEntries(entries, state({ status: 'unavailable' })).length, entries.filter(e => e.status === 'unavailable').length);
 });
 test('search matches all terms, case-insensitively', () => {
   assert.equal(selectEntries(entries, state({ q: 'SHEETPROOF pandas' }))[0].id, 'sheetproof');
   assert.equal(selectEntries(entries, state({ q: 'no-such-package' })).length, 0);
 });
 test('type, category and evidence filters compose', () => {
-  assert.deepEqual(selectEntries(entries, state({ type: 'integration', category: 'research', status: 'documented' })).map(e => e.id), ['searxng']);
+  assert.deepEqual(selectEntries(entries, state({ type: 'integration', category: 'research', status: 'documented' })).map(e => e.id).sort(), entries.filter(e => e.type === 'integration' && e.categories.includes('research') && e.status === 'documented').map(e => e.id).sort());
 });
 test('sorting is deterministic and does not mutate data', () => {
   const before = JSON.stringify(entries);

@@ -9,6 +9,18 @@ import unittest
 from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parents[1]
+CATALOG = json.loads((ROOT / 'data/catalog.json').read_text())
+AVAILABLE = [entry for entry in CATALOG if entry['status'] != 'unavailable']
+
+
+def matches(query='', kind='', category=''):
+    """Compute expected results without tying tests to a fixed catalog size."""
+    return [entry for entry in AVAILABLE
+            if (not kind or entry['type'] == kind)
+            and (not category or category in entry['categories'])
+            and all(term in ' '.join([entry['name'], entry['summary'], entry['type'],
+                                    *entry['categories'], *entry['requirements']]).lower()
+                    for term in query.lower().split())]
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -52,7 +64,7 @@ class CatalogBrowserTests(unittest.TestCase):
 
     def open(self, suffix='/'):
         self.page.goto(self.base + suffix)
-        expect(self.page.locator('#results article')).to_have_count(7)
+        expect(self.page.locator('#results article')).to_have_count(len(AVAILABLE))
 
     def test_desktop_and_mobile(self):
         self.open('/project/')
@@ -69,17 +81,17 @@ class CatalogBrowserTests(unittest.TestCase):
     def test_filters_and_empty_state(self):
         self.open()
         self.page.locator('#q').fill('SHEETPROOF')
-        expect(self.page.locator('#results article')).to_have_count(2)
+        expect(self.page.locator('#results article')).to_have_count(len(matches('sheetproof')))
         self.page.locator('#type').select_option('tool')
-        expect(self.page.locator('#results article')).to_have_count(1)
+        expect(self.page.locator('#results article')).to_have_count(len(matches('sheetproof', 'tool')))
         self.page.locator('#q').fill('does-not-exist')
         expect(self.page.locator('#empty')).to_be_visible()
         self.page.locator('#empty-reset').click()
-        expect(self.page.locator('#results article')).to_have_count(7)
+        expect(self.page.locator('#results article')).to_have_count(len(AVAILABLE))
         self.page.locator('#unavailable').check()
-        expect(self.page.locator('#results article')).to_have_count(12)
+        expect(self.page.locator('#results article')).to_have_count(len(CATALOG))
         self.page.locator('#status').select_option('unavailable')
-        expect(self.page.locator('#results article')).to_have_count(5)
+        expect(self.page.locator('#results article')).to_have_count(len(CATALOG) - len(AVAILABLE))
 
     def test_comparison_and_shared_url(self):
         self.open()
@@ -105,9 +117,9 @@ class CatalogBrowserTests(unittest.TestCase):
         expect(self.page.locator('#q')).to_be_focused()
         self.page.locator('#type').select_option('integration')
         self.page.locator('#category').select_option('research')
-        expect(self.page.locator('#results article')).to_have_count(1)
+        expect(self.page.locator('#results article')).to_have_count(len(matches(kind='integration', category='research')))
         self.page.go_back()
-        expect(self.page.locator('#results article')).to_have_count(4)
+        expect(self.page.locator('#results article')).to_have_count(len(matches(kind='integration')))
         self.page.route('**/guide.html', lambda route: route.fulfill(body='<h1>Guide route</h1>', content_type='text/html'))
         self.page.goto(self.base + '/#/catalog/tools')
         self.page.wait_for_url('**/guide.html#/catalog/tools')
