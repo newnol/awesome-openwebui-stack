@@ -22,6 +22,7 @@ Never publish secrets, connect to production, or merge to main. Release metadata
 ---
 
 ### Task 1 — Reference stack
+
 **Files:** docker-compose.yml, .env.example, tests/compose.test.mjs
 
 - [x] Add test assertions for ports, secrets and image references.
@@ -29,6 +30,7 @@ Never publish secrets, connect to production, or merge to main. Release metadata
 - [ ] Run node --test tests/compose.test.mjs and docker compose config --quiet (in CI).
 
 ### Task 2 — Guidance and validation
+
 **Files:** stacks/openwebui-stack/README.md, .github/workflows/checks.yml
 
 - [x] Document versions, backup/migration risks and access controls.
