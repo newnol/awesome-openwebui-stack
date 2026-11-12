@@ -8,6 +8,8 @@
 
 ## Quick start (run Open WebUI in a few minutes)
 
+> **Reference example, not production-ready.** Proposed release candidates (reviewed 2026-11-12): Open WebUI `v0.13.3`, LiteLLM `v1.109.1`, Open Terminal `0.17.7`. This combination has **not** been deployment-tested. Production operators should additionally verify image signatures/digests, test the stack and take backups before upgrades.
+
 Do everything **from this folder** (where `docker-compose.yml` lives). Get this folder with a **full clone**, a **sparse clone**, **`svn export`**, or a **folder ZIP** (see step **0**), then **one copy step** for the example files, edit two files, and start Docker.
 
 ### What you need installed
@@ -75,9 +77,12 @@ Open `.env` in an editor and set at least:
 |----------|-------------|
 | `OPEN_TERMINAL_API_KEY` | A long random string (Open Terminal uses this). |
 | `POSTGRES_PASSWORD` | A strong password (Postgres + LiteLLM `DATABASE_URL` use it). |
-| `LITELLM_MASTER_KEY` | LiteLLM admin key (e.g. `sk-...`); you will use this in Open WebUI when pointing at LiteLLM. |
+| `LITELLM_MASTER_KEY` | Strong LiteLLM admin key (`sk-...`); prefer scoped virtual keys for Open WebUI connections. |
+| `WEBUI_SECRET_KEY` | A persistent Open WebUI signing secret. |
 
-Uncomment and fill any **provider** API keys you use inside `config.yaml` (e.g. `GEMINI_API_KEY`) so LiteLLM can call those models.
+All four values are required and must be non-empty. Generate each with `openssl rand -hex 32` (prefix the LiteLLM master key with `sk-`). Do not reuse secrets. Keep `.env` untracked.
+
+Uncomment and fill any **provider** API keys you use in `.env` (e.g. `GEMINI_API_KEY`) so LiteLLM can call those models.
 
 ### 3) Edit `config.yaml` (models for LiteLLM)
 
@@ -95,10 +100,12 @@ docker network create ai-network 2>/dev/null || true
 ### 5) Start all services
 
 ```bash
+docker compose config --quiet
+docker compose pull
 docker compose up -d
 ```
 
-Wait until containers are healthy (first pull can take several minutes).
+Wait until containers are healthy (first pull can take several minutes). All host-published ports are bound to **127.0.0.1**, while PostgreSQL is not published at all. Use an authenticated TLS reverse proxy or private tunnel for remote access; do not widen the binds without an access-control plan.
 
 ### 6) Open in the browser
 
@@ -106,7 +113,7 @@ Wait until containers are healthy (first pull can take several minutes).
 |---------|-----|--------|
 | **Open WebUI** | [http://localhost:3000](http://localhost:3000) | Create the first admin account on first visit. |
 | **LiteLLM** | [http://localhost:4000](http://localhost:4000) | Admin / model UI; use `LITELLM_MASTER_KEY` when asked for a key. |
-| **Open Terminal** | `http://localhost:18000` | Used from Open WebUI tools; not a full browser UI for day‑to‑day chat. |
+| **Open Terminal** | `http://localhost:18000` | Loopback-only API; connect Open WebUI using `http://open-terminal:8000`. |
 
 ### 7) Connect Open WebUI to LiteLLM (one-time in the UI)
 
@@ -114,16 +121,19 @@ Inside Open WebUI: **Admin panel → Settings → Connections** (wording may var
 
 - Set **OpenAI API** base URL to: `http://litellm:4000/v1`  
   (This hostname works **from the Open WebUI container** on the same Docker network.)
-- Set **API key** to the same value as **`LITELLM_MASTER_KEY`** in your `.env` (unless you use a LiteLLM virtual key).
+- Set **API key** to a scoped LiteLLM virtual key if possible. Reserve `LITELLM_MASTER_KEY` for administration.
 
 Save, then pick an OpenAI‑compatible model in chat that matches a model you configured in LiteLLM.
 
 ### 8) Stop or update
 
 ```bash
-docker compose down          # stop
-docker compose pull && docker compose up -d   # refresh images (optional)
+docker compose down   # stop (named volumes persist)
+docker compose config --quiet
+docker compose pull && docker compose up -d   # apply updated pinned tags
 ```
+
+**Upgrade warning:** Back up the `open-webui` and `postgres_data` volumes and record existing image digests before upgrading. Open WebUI 0.13.0 includes database schema migrations, so rolling back an image is *not* a database rollback. LiteLLM 1.109.x also changes fallback targets and caching: review [action-required items](https://github.com/BerriAI/litellm/releases/tag/v1.109.0) against your real `config.yaml`. Restore both images and data from backup if migration fails.
 
 ### Troubleshooting (short)
 
@@ -132,6 +142,14 @@ docker compose pull && docker compose up -d   # refresh images (optional)
 - **Open WebUI cannot reach LiteLLM** → base URL must be `http://litellm:4000/v1` (Docker DNS name `litellm`), not `localhost`, from inside the Open WebUI container.
 
 ---
+
+## Security and compatibility notes
+
+- The Compose example no longer supplies fallback credentials. Fill `POSTGRES_PASSWORD`, `OPEN_TERMINAL_API_KEY`, `LITELLM_MASTER_KEY`, and `WEBUI_SECRET_KEY` in a private `.env`.
+- WebUI, LiteLLM and Open Terminal bind to loopback on the host; only trusted workloads should join the existing external `ai-network`. Restrict request paths that carry user-identity headers before enabling LiteLLM header mappings.
+- Open Terminal executes commands; do not mount host Docker sockets or sensitive directories for untrusted workloads. Restrict egress and API keys.
+- Release tags improve predictability over `latest`, but are **not** cryptographically immutable digest pins. PostgreSQL still tracks the `16` major line; resolve verified digests for strict reproducibility.
+- Release references: [Open WebUI v0.13.3](https://github.com/open-webui/open-webui/releases/tag/v0.13.3), [Open WebUI v0.13.0 migrations/security](https://github.com/open-webui/open-webui/releases/tag/v0.13.0), [LiteLLM v1.109.1](https://github.com/BerriAI/litellm/releases/tag/v1.109.1), [Open Terminal v0.17.7](https://github.com/open-webui/open-terminal/releases/tag/v0.17.7).
 
 ## Use case
 
