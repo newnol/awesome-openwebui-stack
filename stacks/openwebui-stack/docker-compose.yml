@@ -1,11 +1,9 @@
-version: "3.8"
-
 services:
   open-webui:
-    image: ghcr.io/open-webui/open-webui@sha256:b8095f79a6a8ffad8f830bdacc9b5b0aef805689b31bca0b065cc2424d3cfaeb
+    image: ghcr.io/open-webui/open-webui:v0.13.3
     container_name: open-webui
     ports:
-      - "3000:8080"
+      - "127.0.0.1:3000:8080"
     restart: always
     env_file:
       - .env
@@ -13,39 +11,42 @@ services:
       - ENABLE_VERSION_UPDATE_CHECK=false
       - ENABLE_FORWARD_USER_INFO_HEADERS=true
       - ENABLE_ADMIN_CHAT_ACCESS=false
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:?Set WEBUI_SECRET_KEY in .env}
     volumes:
       - open-webui:/app/backend/data
     networks:
       - ai-network
 
   open-terminal:
-    image: ghcr.io/open-webui/open-terminal:latest
+    image: ghcr.io/open-webui/open-terminal:0.17.7
     container_name: open-terminal
     ports:
-      - "18000:8000"
+      - "127.0.0.1:18000:8000"
     restart: unless-stopped
     environment:
-      - OPEN_TERMINAL_API_KEY=${OPEN_TERMINAL_API_KEY:-change-this-key}
+      - OPEN_TERMINAL_API_KEY=${OPEN_TERMINAL_API_KEY:?Set OPEN_TERMINAL_API_KEY in .env}
     volumes:
       - open-terminal:/home/user
     networks:
       - ai-network
 
   litellm:
-    image: docker.litellm.ai/berriai/litellm:main-latest
+    image: ghcr.io/berriai/litellm:v1.109.1
     volumes:
       - ./config.yaml:/app/litellm-config.yaml
     command: ["--config", "/app/litellm-config.yaml"]
     ports:
-      - "4000:4000"
+      - "127.0.0.1:4000:4000"
     environment:
-      DATABASE_URL: postgresql://llmproxy:${POSTGRES_PASSWORD:-dbpassword9090}@db:5432/litellm
+      DATABASE_URL: postgresql://llmproxy:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/litellm
       STORE_MODEL_IN_DB: "True"
+      LITELLM_MASTER_KEY: ${LITELLM_MASTER_KEY:?Set LITELLM_MASTER_KEY in .env}
     env_file:
       - .env
     restart: always
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     healthcheck:
       test:
         [
@@ -66,9 +67,7 @@ services:
     environment:
       POSTGRES_DB: litellm
       POSTGRES_USER: llmproxy
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dbpassword9090}
-    ports:
-      - "5432:5432"
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
