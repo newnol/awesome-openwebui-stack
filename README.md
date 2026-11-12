@@ -19,6 +19,7 @@ Find Open WebUI tools, functions, pipes, integrations and reference stacks **by 
 | Connect model providers | [LiteLLM](catalog/integrations.md#litellm) | Provider keys, proxy permissions, data handling |
 | Search the web | [SearXNG](catalog/integrations.md#searxng) | JSON output and access to upstream search engines |
 | Run code and work with files | [Open Terminal](catalog/integrations.md#open-terminal) | Isolation, API key, filesystem and network permissions |
+| Use coding agents in chat | [Open Terminal Coding Agents](docs/open-terminal-agents.md) | Open WebUI / terminal versions, CLI login, agent permissions |
 | Explore a multi-service setup | [Reference stack](stacks/openwebui-stack/README.md) | Example only; review secrets and exposed ports |
 
 ## Explore without guesswork

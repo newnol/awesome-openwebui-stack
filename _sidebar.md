@@ -24,6 +24,9 @@
   - [Self-hosting](/categories/self-hosting.md)
   - [Security](/categories/security.md)
 
+- Guides
+  - [Coding agents via Open Terminal](/docs/open-terminal-agents.md)
+
 - Reference stacks
   - [Open WebUI example](/stacks/openwebui-stack/README.md)
   - [Stack template](/stacks/template-full-stack/README.md)

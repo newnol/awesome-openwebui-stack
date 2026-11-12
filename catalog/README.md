@@ -14,6 +14,7 @@
 | [LiteLLM](integrations.md#litellm) | integration | self-hosting, automation | Source documented |
 | [Ollama](integrations.md#ollama) | integration | self-hosting | Source documented |
 | [Open Terminal](integrations.md#open-terminal) | integration | coding, automation, self-hosting | Source documented |
+| [Open Terminal Coding Agents](integrations.md#open-terminal-coding-agents) | integration | coding, multi-agent, automation, self-hosting | Source documented |
 | [Open WebUI reference stack](stacks.md#open-webui-reference-stack) | stack | self-hosting, coding | Example / not runtime-tested |
 | [SearXNG](integrations.md#searxng) | integration | research, self-hosting | Source documented |
 | [SheetProof](tools.md#sheetproof) | tool | productivity | Source documented |
