@@ -63,6 +63,25 @@ Give model tools access to a separate shell and file workspace.
 
 Open WebUI connection and security documentation inspected. Container isolation is not a security audit.
 
+## Open Terminal Coding Agents
+
+Run CLI coding agents such as Codex, Claude Code, Gemini CLI and Pi through a connected Open Terminal in agent-capable Open WebUI.
+
+| Field | Details |
+| --- | --- |
+| Type | integration |
+| Use cases | coding, multi-agent, automation, self-hosting |
+| Evidence | Source documented |
+| Source checked | 2026-11-12 |
+| Requirements | Open WebUI administrator-managed Open Terminal connection; Compatible Open Terminal 0.17.x or newer; An installed, authenticated coding agent CLI within the terminal; Trusted users and an isolated test workspace |
+| Compatibility | Requires an agent-capable Open WebUI version (documented in v0.13.x) and Open Terminal 0.17.x or newer; CLI protocol/version compatibility varies. Not runtime-tested here. |
+| Safety | Coding agents can execute commands and access files with terminal privileges. CLI approvals and tool restrictions vary; never expose terminal credentials or mount the host Docker socket for untrusted users. |
+| License | Open Terminal is MIT-licensed; coding agent CLIs and model providers have separate terms. |
+
+[Setup / documentation](https://docs.openwebui.com/features/open-terminal/setup/connecting/) · [Source](https://github.com/open-webui/open-terminal) · [Review evidence](https://github.com/open-webui/open-terminal/releases/tag/v0.17.0)
+
+Inspected official Open Terminal README and v0.17.0 release notes plus Open WebUI v0.13.3 release notes. Source-documented only; agent login, permissions, and end-to-end runtime were not tested.
+
 ## SearXNG
 
 Use a self-hosted metasearch service with Open WebUI web search.

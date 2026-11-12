@@ -202,5 +202,32 @@
     "requirements": ["Open Terminal service", "Strong API key", "Administrator-managed integration", "Capable tool-calling model"],
     "risk": "Runs arbitrary commands. Restrict mounts and network access, set resource limits and review isolation before use.",
     "license": "See upstream license and service terms."
+  },
+  {
+    "id": "open-terminal-coding-agents",
+    "name": "Open Terminal Coding Agents",
+    "type": "integration",
+    "categories": [
+      "coding",
+      "multi-agent",
+      "automation",
+      "self-hosting"
+    ],
+    "summary": "Run CLI coding agents such as Codex, Claude Code, Gemini CLI and Pi through a connected Open Terminal in agent-capable Open WebUI.",
+    "source": "https://github.com/open-webui/open-terminal",
+    "guide": "https://docs.openwebui.com/features/open-terminal/setup/connecting/",
+    "status": "documented",
+    "reviewed": "2026-11-12",
+    "evidence": "https://github.com/open-webui/open-terminal/releases/tag/v0.17.0",
+    "review_note": "Inspected official Open Terminal README and v0.17.0 release notes plus Open WebUI v0.13.3 release notes. Source-documented only; agent login, permissions, and end-to-end runtime were not tested.",
+    "compatibility": "Requires an agent-capable Open WebUI version (documented in v0.13.x) and Open Terminal 0.17.x or newer; CLI protocol/version compatibility varies. Not runtime-tested here.",
+    "requirements": [
+      "Open WebUI administrator-managed Open Terminal connection",
+      "Compatible Open Terminal 0.17.x or newer",
+      "An installed, authenticated coding agent CLI within the terminal",
+      "Trusted users and an isolated test workspace"
+    ],
+    "risk": "Coding agents can execute commands and access files with terminal privileges. CLI approvals and tool restrictions vary; never expose terminal credentials or mount the host Docker socket for untrusted users.",
+    "license": "Open Terminal is MIT-licensed; coding agent CLIs and model providers have separate terms."
   }
 ]

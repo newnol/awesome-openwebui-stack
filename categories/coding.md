@@ -8,4 +8,5 @@
 
 - [Diagram Generator](../catalog/tools.md#diagram-generator) (tool; **Implementation unavailable**) - Legacy listing for architecture diagrams. Implementation is not available at the linked source.
 - [Open Terminal](../catalog/integrations.md#open-terminal) (integration; **Source documented**) - Give model tools access to a separate shell and file workspace.
+- [Open Terminal Coding Agents](../catalog/integrations.md#open-terminal-coding-agents) (integration; **Source documented**) - Run CLI coding agents such as Codex, Claude Code, Gemini CLI and Pi through a connected Open Terminal in agent-capable Open WebUI.
 - [Open WebUI reference stack](../catalog/stacks.md#open-webui-reference-stack) (stack; **Example / not runtime-tested**) - Compose example combining Open WebUI, LiteLLM, Open Terminal and PostgreSQL.

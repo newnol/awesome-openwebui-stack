@@ -12,6 +12,10 @@ Tìm theo nhu cầu, lọc theo loại và bằng chứng, so sánh tối đa ba
 
 **Đã xem nguồn không có nghĩa là đã chạy thử hay kiểm toán bảo mật.** Các mục chưa có implementation được giữ lại kèm cảnh báo và ẩn mặc định. Repo này không phải cửa hàng cài đặt tự động.
 
+## Kết nối coding agent
+
+Bạn có thể tham khảo [hướng dẫn kết nối Open Terminal với các coding agent](docs/open-terminal-agents.md) như Codex, Claude Code, Gemini CLI và Pi. Đây là tài liệu kiểm tra từ nguồn upstream; repo chưa thử nghiệm end-to-end và việc chạy shell cần giới hạn quyền.
+
 ## Đóng góp
 
 Bạn có thể gửi biểu mẫu issue mà không cần sửa mã. Khi gửi PR, sửa `data/catalog.json` và chạy `node scripts/catalog.mjs` để sinh lại catalog và các trang phân loại. Xem [CONTRIBUTING.md](CONTRIBUTING.md) và [tài liệu bảo trì](docs/catalog-maintenance.md).

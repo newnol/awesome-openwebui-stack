@@ -9,5 +9,6 @@
 - [LiteLLM](../catalog/integrations.md#litellm) (integration; **Source documented**) - Connect model providers through an OpenAI-compatible proxy endpoint.
 - [Ollama](../catalog/integrations.md#ollama) (integration; **Source documented**) - Connect a local model server through Open WebUI's Ollama connection.
 - [Open Terminal](../catalog/integrations.md#open-terminal) (integration; **Source documented**) - Give model tools access to a separate shell and file workspace.
+- [Open Terminal Coding Agents](../catalog/integrations.md#open-terminal-coding-agents) (integration; **Source documented**) - Run CLI coding agents such as Codex, Claude Code, Gemini CLI and Pi through a connected Open Terminal in agent-capable Open WebUI.
 - [Open WebUI reference stack](../catalog/stacks.md#open-webui-reference-stack) (stack; **Example / not runtime-tested**) - Compose example combining Open WebUI, LiteLLM, Open Terminal and PostgreSQL.
 - [SearXNG](../catalog/integrations.md#searxng) (integration; **Source documented**) - Use a self-hosted metasearch service with Open WebUI web search.

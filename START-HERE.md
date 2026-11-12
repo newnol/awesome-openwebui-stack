@@ -13,6 +13,7 @@ You do not need to clone this repository to discover an add-on. Choose a goal, i
 | Connect several model providers | [LiteLLM](catalog/integrations.md#litellm) |
 | Add web search | [SearXNG](catalog/integrations.md#searxng) |
 | Let a model run commands | [Open Terminal](catalog/integrations.md#open-terminal); review its security boundary first |
+| Chat with a coding agent CLI | [Open Terminal coding agents](docs/open-terminal-agents.md); review credential and workspace isolation |
 | See services used together | [Open WebUI reference stack](stacks/openwebui-stack/README.md); an example, not a production distribution |
 
 ## Use the explorer

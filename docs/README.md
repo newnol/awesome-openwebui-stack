@@ -7,6 +7,8 @@ This repo is a **showcase catalog** (stacks, tools, functions, pipes). It does *
 - [Open WebUI documentation](https://docs.openwebui.com/) — tools, functions, plugins, admin.
 - [Open WebUI source](https://github.com/open-webui/open-webui) — reference implementation.
 
+**User guide:** [Use coding agents in Open WebUI with Open Terminal](open-terminal-agents.md).
+
 **Contributor docs:** [submission guidelines](submission-guidelines.md), [review criteria](review-criteria.md), [stack format](stack-format.md), [FAQ](faq.md), [category guide](category-guide.md).
 
 **Maintainer docs:** [GitHub settings checklist](maintainers.md) (About, topics, social preview).
